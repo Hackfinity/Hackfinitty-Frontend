@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import { hackfinity_backend } from 'declarations/hackfinity_backend';
-
+import {canisterId,createActor,idlFactory} from "../../declarations/backend"
 function App() {
   const [greeting, setGreeting] = useState('');
 
   function handleSubmit(event) {
     event.preventDefault();
     const name = event.target.elements.name.value;
-    hackfinity_backend.greet(name).then((greeting) => {
+    const actor = createActor(canisterId,{})
+
+    actor.greet(name).then((greeting) => {
       setGreeting(greeting);
     });
     return false;
@@ -15,15 +16,7 @@ function App() {
 
   return (
     <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
+      IC Hackerthon Platform
     </main>
   );
 }

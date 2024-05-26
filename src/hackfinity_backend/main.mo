@@ -1,5 +1,7 @@
 actor {
-  public query func greet(name : Text) : async Text {
-    return "Hello, " # name # "!";
+  stable var state = 0;
+  
+  public func name(arg : Text) : async () {
+    
   };
 };
