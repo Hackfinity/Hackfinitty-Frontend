@@ -8,7 +8,6 @@ import SpinLoading from "./components/utils/SpinLoading";
 
 const App = () => {
   return (
-<<<<<<< HEAD
     <div className="App">
       <Suspense fallback={<SpinLoading />}>
         <Router> {/* Wrap Routes with BrowserRouter */}
@@ -22,11 +21,6 @@ const App = () => {
         </Router>
       </Suspense>
     </div>
-=======
-    <main>
-      IC Hackerthon Platform
-    </main>
->>>>>>> origin/HEAD
   );
 };
 
