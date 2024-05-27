@@ -1,59 +1,255 @@
-# hackfinity
+# Backend API Documentation
 
-Welcome to your new hackfinity project and to the internet computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
+This document describes the functions available on the backend canister.
 
-To get started, you might want to explore the project directory structure and the default configuration file. Working with this project in your development environment will not affect any production deployment or identity tokens.
+We have three major entities that can call the backend functions.
 
-To learn more before you start working with hackfinity, see the following documentation available online:
+    Admins
+    Participants
+    Organizers
 
-- [Quick Start](https://internetcomputer.org/docs/current/developer-docs/setup/deploy-locally)
-- [SDK Developer Tools](https://internetcomputer.org/docs/current/developer-docs/setup/install)
-- [Motoko Programming Language Guide](https://internetcomputer.org/docs/current/motoko/main/motoko)
-- [Motoko Language Quick Reference](https://internetcomputer.org/docs/current/motoko/main/language-manual)
+- add_admin : adds a neww admin principal address. It can only be called by another admin or the identity which deployed the backend canister
 
-If you want to start working on your project right away, you might want to try the following commands:
+- delete_admin : deletes a neww admin principall address. It can only be called by another admin or the identity which deployed the backend canister
 
-```bash
-cd hackfinity/
-dfx help
-dfx canister --help
+- get_all_admins: returns a list of all the admin Principals available. anyone can call this function
+
+
+- add_category : adds a new category to the list. Can only be called by an admin or deployer identity
+
+- delete_category : adds a new category to the list. Can only be called by an admin or deployer identity
+
+- get_all_categories: returns a list of all the categories available. open
+
+- create_organizer_account : allows the user to register as an organizer on the platform. open to anyone
+
+
+- create_new_hackathon : allows the user to create a new hackathon. Only users registered as organizers can call this function
+
+
+- get_all_hackathons : returns all the hackathons available on the platform. open
+
+- delete_hackathon : deletes a hackathon entry from the platform. Can only be called by the organizer that registered the hackathon
+
+
+- get_organizer_hackathons : returns all the hackathons registered by a specific organizer. open
+
+ - register_for_hackathon : allows a user to enrol in a particular hackathon. User must have been registered as a participant
+
+- get_participant_hack_submission : returns the participant's submission for a particular hackathon
+
+- get_user_profile : returns the profile details about the user. open
+
+- get_all_participants : returns profile details for every user registered as a participant. open
+
+- add_submission : allows the user to submit their project for a specific hackathon. User must have a participant account
+
+- delete_submission : allows the participant to delete their project submission for a specific hackathon.
+
+- rank_hackathon_submission : allows hackathon organizer to give score to a specific project submission of their hackathon
+
+- get_participant_hackathons : returns all the hackathons that the participant has registered for
+
+- get_hackathon_submissions : returns all the projects that have been submitted for a specific hackathon
+
+- create_participant_profile : allows the user to register as a participant on the platform
+
+- isParticipant : returns a boolean on whether or not the user is a participant
+
+- isOrganizer : returns a boolean on whether or not the user is an organizer
+
+
+
+
+
 ```
 
-## Running the project locally
+type UserProfileResponse = 
+ variant {
+   none: text;
+   organizer: OrganizerAccount;
+   participant: ParticipantAccount;
+ };
+type Timeline = 
+ record {
+   dueDate: int;
+   eventName: text;
+ };
+type Response_8 = 
+ record {
+   data: opt vec principal;
+   error_text: opt text;
+   status: nat16;
+   status_text: text;
+ };
+type Response_7 = 
+ record {
+   data: opt vec text;
+   error_text: opt text;
+   status: nat16;
+   status_text: text;
+ };
+type Response_6 = 
+ record {
+   data: opt vec record {
+                   principal;
+                   OrganizerAccount;
+                 };
+   error_text: opt text;
+   status: nat16;
+   status_text: text;
+ };
+type Response_5 = 
+ record {
+   data: opt vec record {
+                   principal;
+                   ParticipantAccount;
+                 };
+   error_text: opt text;
+   status: nat16;
+   status_text: text;
+ };
+type Response_4 = 
+ record {
+   data: opt vec HackathonSubmission;
+   error_text: opt text;
+   status: nat16;
+   status_text: text;
+ };
+type Response_3 = 
+ record {
+   data: opt HackathonSubmission;
+   error_text: opt text;
+   status: nat16;
+   status_text: text;
+ };
+type Response_2 = 
+ record {
+   data: opt vec record {
+                   text;
+                   NewHackathon;
+                 };
+   error_text: opt text;
+   status: nat16;
+   status_text: text;
+ };
+type Response_1 = 
+ record {
+   data: opt record {
+               profile: UserProfileResponse;
+               rank: text;
+             };
+   error_text: opt text;
+   status: nat16;
+   status_text: text;
+ };
+type Response = 
+ record {
+   data: opt text;
+   error_text: opt text;
+   status: nat16;
+   status_text: text;
+ };
+type ParticipantAccount = 
+ record {
+   city: text;
+   email: text;
+   fullName: text;
+   gender: variant {
+             Female;
+             Male;
+           };
+   hackathonTheme: text;
+   profileImage: text;
+ };
+type OrganizerAccount = 
+ record {
+   fullName: text;
+   industry: text;
+   location: text;
+   profilePic: text;
+   userName: text;
+ };
+type NewHackathonPayload = 
+ record {
+   categories: vec text;
+   coverImage: text;
+   deliverables: text;
+   description: text;
+   hackathonTimelines: vec Timeline;
+   highlightPhase: text;
+   image: text;
+   location: text;
+   projectGoals: text;
+   title: text;
+ };
+type NewHackathon = 
+ record {
+   categories: vec text;
+   coverImage: text;
+   deliverables: text;
+   description: text;
+   hackathonTimelines: vec Timeline;
+   highlightPhase: text;
+   image: text;
+   location: text;
+   owner: principal;
+   participants: vec text;
+   projectGoals: text;
+   title: text;
+ };
+type Hackfinity = 
+ service {
+   add_admin: (principal) -> (Response);
+   add_category: (text) -> (Response);
+   add_submission: (text, HackathonSubmissionPayload) -> (Response_3);
+   create_new_hackathon: (NewHackathonPayload) -> (Response);
+   create_organizer_account: (OrganizerAccount) -> (Response);
+   create_participant_profile: (ParticipantAccount) -> (Response);
+   delete_admin: (principal) -> (Response);
+   delete_category: (text) -> (Response);
+   delete_hackathon: (text) -> (Response);
+   delete_submission: (text) -> (Response);
+   get_all_admins: () -> (Response_8) query;
+   get_all_categories: () -> (Response_7) query;
+   get_all_hackathons: () -> (Response_2) query;
+   get_all_organizers: () -> (Response_6) query;
+   get_all_participants: () -> (Response_5) query;
+   get_hackathon_submissions: (text) -> (Response_4) query;
+   get_organizer_hackathons: (principal) -> (Response_2);
+   get_participant_hack_submission: (text, principal) -> (Response_3);
+   get_participant_hackathons: (principal) -> (Response_2) query;
+   get_user_profile: (principal) -> (Response_1) query;
+   isOrganizer: (principal) -> (bool);
+   isParticipant: (principal) -> (bool);
+   rank_hackathon_submission: (text, text, nat) -> (Response);
+   register_for_hackathon: (text) -> (Response);
+ };
+type HackathonSubmissionPayload = 
+ record {
+   description: text;
+   githubLink: text;
+   image: text;
+   liveUrlLink: text;
+   presentationSlides: text;
+   title: text;
+ };
+type HackathonSubmission = 
+ record {
+   description: text;
+   githubLink: text;
+   id: text;
+   image: text;
+   liveUrlLink: text;
+   owner: principal;
+   presentationSlides: text;
+   score: nat;
+   title: text;
+ };
+service : () -> Hackfinity
 
-If you want to test your project locally, you can use the following commands:
 
-```bash
-# Starts the replica, running in the background
-dfx start --background
 
-# Deploys your canisters to the replica and generates your candid interface
-dfx deploy
+
+
 ```
-
-Once the job completes, your application will be available at `http://localhost:4943?canisterId={asset_canister_id}`.
-
-If you have made changes to your backend canister, you can generate a new candid interface with
-
-```bash
-npm run generate
-```
-
-at any time. This is recommended before starting the frontend development server, and will be run automatically any time you run `dfx deploy`.
-
-If you are making frontend changes, you can start a development server with
-
-```bash
-npm start
-```
-
-Which will start a server at `http://localhost:8080`, proxying API requests to the replica at port 4943.
-
-### Note on frontend environment variables
-
-If you are hosting frontend code somewhere without using DFX, you may need to make one of the following adjustments to ensure your project does not fetch the root key in production:
-
-- set`DFX_NETWORK` to `ic` if you are using Webpack
-- use your own preferred method to replace `process.env.DFX_NETWORK` in the autogenerated declarations
-  - Setting `canisters -> {asset_canister_id} -> declarations -> env_override to a string` in `dfx.json` will replace `process.env.DFX_NETWORK` with the string in the autogenerated declarations
-- Write your own `createActor` constructor

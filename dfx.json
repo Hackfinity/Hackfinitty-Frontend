@@ -1,12 +1,12 @@
 {
   "canisters": {
-    "hackfinity_backend": {
+    "backend": {
       "main": "src/hackfinity_backend/main.mo",
       "type": "motoko"
     },
-    "hackfinity_frontend": {
+    "frontend": {
       "dependencies": [
-        "hackfinity_backend"
+        "backend"
       ],
       "source": [
         "src/hackfinity_frontend/dist"
@@ -18,7 +18,7 @@
   "defaults": {
     "build": {
       "args": "",
-      "packtool": ""
+      "packtool": "mops sources"
     }
   },
   "output_env_file": ".env",
