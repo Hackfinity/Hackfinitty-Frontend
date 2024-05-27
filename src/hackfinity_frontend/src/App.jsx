@@ -1,31 +1,27 @@
-import { useState } from 'react';
-import { hackfinity_backend } from 'declarations/hackfinity_backend';
+import React, { lazy, Suspense } from "react";
+import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom"; // Import BrowserRouter
 
-function App() {
-  const [greeting, setGreeting] = useState('');
+// Base components
+import LandingPage from "./components/common/LandingPage";
+import NoPage from "./components/common/NoPage";
+import SpinLoading from "./components/utils/SpinLoading";
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    hackfinity_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
-    });
-    return false;
-  }
-
+const App = () => {
   return (
-    <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
-    </main>
+    <div className="App">
+      <Suspense fallback={<SpinLoading />}>
+        <Router> {/* Wrap Routes with BrowserRouter */}
+          <Routes>
+            <Route path="*" element={<NoPage />} />
+            {/* COMMON ROUTES */}
+            <Route index element={<LandingPage />} />
+            {/* Uncomment and add the path prop if you want to use the SignUp route again */}
+            {/* <Route path="/org-signup" element={<SignUp />} /> */}
+          </Routes>
+        </Router>
+      </Suspense>
+    </div>
   );
-}
+};
 
 export default App;
