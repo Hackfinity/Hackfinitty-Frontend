@@ -9,7 +9,7 @@ const BannerVideo = () => {
         loop
         muted
       >
-        <source src="https://unitarmedia.blob.core.windows.net/data/unitar.mp4" />
+        <source src="/src/assets/featured.webp" />
         Your browser does not support the video tag.
       </video>
     </div>

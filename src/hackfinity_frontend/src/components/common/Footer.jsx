@@ -3,6 +3,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { useNavigate } from "react-router-dom";
 import { LinkedIn, YouTube } from "@mui/icons-material";
+import icplogo from '../../assets/icp-logo.png'
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const Footer = () => {
       </div>
 
       <div className="flex justify-between mt-[100px] md:mt-[200px] ml-[20px] md:ml-[40px] border-b-3 border-black">
-        <img src="/assets/unitar-logo.svg" className="md:w-[200px] w-[100px]" />
+        <img src={icplogo} className="md:w-[200px] w-[100px]" />
         <div className="flex items-center space-x-4 mr-4 md:mr-20">
           <a
             href="https://www.facebook.com/UNITARHQ/"

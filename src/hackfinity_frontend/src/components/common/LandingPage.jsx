@@ -6,6 +6,8 @@ import BannerVideo from "./BannerVideo";
 import ImageCarousel from "./ImageCaurosel";
 import BannerItem from "./BannerItem";
 import Footer from "./Footer";
+import avatar1 from '../../assets/maria.jpg';
+import avatar2 from '../../assets/Herbert_Portrait.jpg'
 const LandingPage = () => {
   const [openSignUpModal, setOpenSignUpModal] = useState(false);
   const openModal = () => setOpenSignUpModal(true);
@@ -16,7 +18,7 @@ const LandingPage = () => {
       image: "https://unitarmedia.blob.core.windows.net/data/carouselImg6c.jpg",
       title: " Tap into Talent",
       description: ` Discover the next generation of innovators. Post your hackathon
-      on UNITAR and connect with a global pool of talent. Watch as
+      on ICP and connect with a global pool of talent. Watch as
       diverse teams bring fresh perspectives to your challenges.`,
     },
     {
@@ -100,14 +102,14 @@ const LandingPage = () => {
           </div>
           <div className="animate-text absolute hidden lg:block rounded-full  filter bottom-[180px]  right-[140px]  ">
             <img
-              src="https://unitarmedia.blob.core.windows.net/data/avatar1.jpeg"
+              src={avatar1}
               className="rounded-full hidden lg:block border-[#b71079] border-2   w-[100px] h-[100px] "
               style={{ objectFit: "cover" }}
             />
           </div>
           <div className="animate-text absolute hidden lg:block left-[150px]  bottom-[80px] ">
             <img
-              src="https://unitarmedia.blob.core.windows.net/data/avatar2.jpeg"
+              src={avatar2}
               className="rounded-full hidden lg:block border-[#db3b14] border-2 4 w-[100px] h-[100px] "
               style={{ objectFit: "cover" }}
             />
@@ -137,7 +139,7 @@ const LandingPage = () => {
         </div>
         <div>
           <p className="  text-custom-blue md:text-[32px] text-[18px] px-2  font-bold tracking-wider mt-5 mb-5 md:mb-10 md:mt-10">
-            UNITAR HACKATHON THEMES
+            ICP HACKATHON THEMES
           </p>
         </div>
         <BannerItem />

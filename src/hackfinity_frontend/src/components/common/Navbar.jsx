@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../assets/icplogo-removebg-preview.png";
+import logo from "../../assets/icp-logo.png";
 import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
