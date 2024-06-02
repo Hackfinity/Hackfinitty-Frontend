@@ -17,6 +17,7 @@ module Hackfinitty {
         profileImage : Text;
         hackathonTheme : Text;
     };
+    
 
     public type UserProfileResponse={
         #participant:ParticipantAccount;
