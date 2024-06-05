@@ -2,13 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import robot2 from '../../assets/robot2.png';
 import image404 from '../../assets/404.png'
+import icplogo from '../../assets/icp-logo.png';
 
 const NoPage = () => {
   const navigate = useNavigate()
   return (
     <div className="bg-white min-h-screen overflow-hidden">
       <div>
-        <img className="p-5" src="../../assets/icplogo-removebg-preview.png" alt="logo" />
+        <img className="p-5" src={icp-logo} alt="logo" />
       </div>
       <div className="flex justify-between ">
         <img
