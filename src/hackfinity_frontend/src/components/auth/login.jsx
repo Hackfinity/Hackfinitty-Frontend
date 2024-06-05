@@ -33,27 +33,51 @@ const LogIn = () => {
     setIsSubmitting(true);
     try {
       const authClient = await AuthClient.create();
-      await authClient.login({
-        onSuccess: async () => {
-          const identity = authClient.getIdentity();
+      const isAuthenticated = await authClient.isAuthenticated();
 
-          // Assuming the identity object contains the necessary role information
-          const role = identity.getRole();
+      if (!isAuthenticated) {
+        await authClient.login({
+          identityProvider: 'https://identity.ic0.app',
+          onSuccess: async () => {
+            const identity = await authClient.getIdentity();
+            const userNumber = await identity.getDelegation().identity;
+            const isVerified = await my_project.verifyIdentity(BigInt(userNumber));
 
-          setSuccessMessage("Login successful!");
-          setIsSubmitting(false);
+            if (isVerified) {
+              const role = identity.getRole();  // Adjust this line based on how you obtain the role
 
-          // You may need to adapt these lines based on how you store user information
-          dispatch(setAccessToken({ accessToken: null }));
-          dispatch(setLoggedInUserRef({ loggedInUserRef: null }));
-          dispatch(setCurrentUserRole({ currentUserRole: role }));
-          handleHome(role);
-        },
-        onError: (err) => {
-          setErrorMessage(`Login failed: ${err.message}`);
-          setIsSubmitting(false);
-        },
-      });
+              setSuccessMessage("Login successful!");
+              setIsSubmitting(false);
+
+              // Update Redux store
+              dispatch(setAccessToken({ accessToken: null }));
+              dispatch(setLoggedInUserRef({ loggedInUserRef: null }));
+              dispatch(setCurrentUserRole({ currentUserRole: role }));
+              handleHome(role);
+            } else {
+              setErrorMessage("Identity verification failed.");
+              setIsSubmitting(false);
+            }
+          },
+          onError: (err) => {
+            setErrorMessage(`Login failed: ${err.message}`);
+            setIsSubmitting(false);
+          },
+        });
+      } else {
+        // User is already authenticated
+        const identity = await authClient.getIdentity();
+        const role = identity.getRole();  // Adjust this line based on how you obtain the role
+
+        setSuccessMessage("Login successful!");
+        setIsSubmitting(false);
+
+        // Update Redux store
+        dispatch(setAccessToken({ accessToken: null }));
+        dispatch(setLoggedInUserRef({ loggedInUserRef: null }));
+        dispatch(setCurrentUserRole({ currentUserRole: role }));
+        handleHome(role);
+      }
     } catch (err) {
       setErrorMessage(`Error initializing AuthClient: ${err.message}`);
       setIsSubmitting(false);
@@ -69,7 +93,7 @@ const LogIn = () => {
   return (
     <div>
       <Navbar />
-      <div className="max-h-screen mt-10 flex items-center justify-center  bg-light-blue relative bottom-[20px]">
+      <div className="max-h-screen mt-10 flex items-center justify-center bg-light-blue relative bottom-[20px]">
         <div className="bg-white p-8 rounded shadow-md w-100 border border-custom-blue">
           <h2 className="mb-6 font-semibold">
             Login to the ICP hackathon platform

@@ -1,5 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import robot2 from '../../assets/robot2.png';
+import image404 from '../../assets/404.png'
+
 const NoPage = () => {
   const navigate = useNavigate()
   return (
@@ -9,14 +12,14 @@ const NoPage = () => {
       </div>
       <div className="flex justify-between ">
         <img
-          src="/assets/robot2.jpg"
+          src={robot2}
           className="relative top-[150px]"
           alt="robot"
         />
         <div className="flex flex-col">
           <img
             className="w-[500px] h-[300px] relative bottom-[100px] right-[250px]"
-            src="/assets/404 image.jpg"
+            src={image404}
             alt="404 page"
           />
           <button onClick={() => navigate(-1)} className=" border-2 border-custom-blue rounded-md px-10 py-2 w-[150px] font-semibold text-sm text-custom-blue">

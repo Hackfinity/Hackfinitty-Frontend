@@ -2,7 +2,7 @@
 "use client";
 import React from "react";
 import FeatureBanner from "./FeatureBanner";
-import icon1 from '../../assets/avatar2.png'
+import icon1 from '../../assets/robot2.png'
 
 const BannerItem = () => {
   return (
