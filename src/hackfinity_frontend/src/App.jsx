@@ -5,9 +5,9 @@ import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom
 import LandingPage from "./components/common/LandingPage";
 import NoPage from "./components/common/NoPage";
 import SpinLoading from "./components/utils/SpinLoading";
-import participantSignup from './components/auth/participantSignup';
 import SignUp from './components/auth/SignUp';
 import Login from '../src/components/auth/login';
+import UnAuthorized from "./components/utils/Unauthorized";
 
 const App = () => {
   return (

@@ -112,7 +112,7 @@ const SignUp = () => {
               )}
             </button>
             <p className="mt-5 md:text-[16px] text-gray-600 text-[10px]">
-              Already have a UNITAR account?
+              Already have a ICP account?
               <Link
                 to="/login"
                 className="text-blue-500 ml-1 text-[10px] md:text-[16px]"
