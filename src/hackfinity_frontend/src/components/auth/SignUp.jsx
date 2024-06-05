@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import Navbar from "../common/Navbar";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {
   setCurrentUserRole,
   setAccessToken,
   setLoggedInUserRef,
 } from "../features/user/userSlice";
-// import VerificationModal from "./VerificationModal";
 import { CircularProgress } from "@mui/material";
 import { AuthClient } from "@dfinity/auth-client";
 
@@ -15,8 +14,6 @@ const SignUp = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [user_code, setUserCode] = useState("");
-
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
@@ -38,30 +35,46 @@ const SignUp = () => {
     setIsSubmitting(true);
     try {
       const authClient = await AuthClient.create();
-      await authClient.login({
-        onSuccess: async () => {
-          const identity = authClient.getIdentity();
-          const principal = identity.getPrincipal();
+      const isAuthenticated = await authClient.isAuthenticated();
 
-          // Assuming the principal contains the necessary role information
-          const role = getRole();
+      if (!isAuthenticated) {
+        await authClient.login({
+          identityProvider: 'https://identity.ic0.app',
+          onSuccess: async () => {
+            const identity = await authClient.getIdentity();
+            const principal = identity.getPrincipal().toText();
 
-          setSuccessMessage("Sign up successful! Verification code sent.");
-          setUserCode(principal.toText());
-          setIsSubmitting(false);
-          // setTimeout(() => {
-          //   setShowVerificationModal(true);
-          // }, 1500);
+            const role = getRole();
 
-          dispatch(setAccessToken({ accessToken: principal.toText() }));
-          dispatch(setLoggedInUserRef({ loggedInUserRef: principal.toText() }));
-          dispatch(setCurrentUserRole({ currentUserRole: role }));
-        },
-        onError: (err) => {
-          setErrorMessage(`Sign up failed: ${err.message}`);
-          setIsSubmitting(false);
-        },
-      });
+            setSuccessMessage("Sign up successful!");
+            setIsSubmitting(false);
+
+            // Update Redux store
+            dispatch(setAccessToken({ accessToken: principal }));
+            dispatch(setLoggedInUserRef({ loggedInUserRef: principal }));
+            dispatch(setCurrentUserRole({ currentUserRole: role }));
+            navigate(role === "ORGANIZER" ? "/organizer" : "/participant");
+          },
+          onError: (err) => {
+            setErrorMessage(`Sign up failed: ${err.message}`);
+            setIsSubmitting(false);
+          },
+        });
+      } else {
+        // User is already authenticated
+        const identity = await authClient.getIdentity();
+        const principal = identity.getPrincipal().toText();
+        const role = getRole();
+
+        setSuccessMessage("Sign up successful!");
+        setIsSubmitting(false);
+
+        // Update Redux store
+        dispatch(setAccessToken({ accessToken: principal }));
+        dispatch(setLoggedInUserRef({ loggedInUserRef: principal }));
+        dispatch(setCurrentUserRole({ currentUserRole: role }));
+        navigate(role === "ORGANIZER" ? "/organizer" : "/participant");
+      }
     } catch (err) {
       setErrorMessage(`Error initializing AuthClient: ${err.message}`);
       setIsSubmitting(false);
@@ -69,17 +82,14 @@ const SignUp = () => {
   };
 
   const handleHover = () => {
-    if (isSubmitting) {
-      return "cursor-not-allowed";
-    } else {
-      return "cursor-pointer hover:bg-white hover:text-custom-blue hover:border-2 hover:border-custom-blue";
-    }
+    return isSubmitting
+      ? "cursor-not-allowed"
+      : "cursor-pointer hover:bg-white hover:text-custom-blue hover:border-2 hover:border-custom-blue";
   };
 
   return (
     <div>
       <Navbar />
-
       <div className="max-h-screen flex items-center justify-center mt-10 bg-light-blue">
         <div className="bg-white p-8 rounded shadow-md w-100 border border-custom-blue overflow-y-auto ">
           <h2 className="mb-6 font-semibold">
@@ -93,43 +103,37 @@ const SignUp = () => {
           )}
 
           {errorMessage && (
-            <div className="mt-4 text-red-600 mb-4 border p-5 rounded border-red-600 text-[10px]" >
+            <div className="mt-4 text-red-600 mb-4 border p-5 rounded border-red-600 text-[10px]">
               {errorMessage}
-              </div>
+            </div>
+          )}
+
+          <button
+            onClick={handleICSignUp}
+            disabled={isSubmitting}
+            className={`w-full text-[13px] md:text-[16px] bg-custom-blue text-white py-2 mt-4 rounded ${handleHover()}`}
+          >
+            {isSubmitting ? (
+              <>
+                <CircularProgress sx={{ color: "white" }} size={20} /> Signing you up...
+              </>
+            ) : (
+              "Sign up with Internet Identity"
             )}
-  
-            <button
-              onClick={handleICSignUp}
-              disabled={isSubmitting}
-              className={`w-full text-[13px] md:text-[16px] bg-custom-blue text-white py-2 mt-4 rounded ${handleHover()}`}
+          </button>
+          <p className="mt-5 md:text-[16px] text-gray-600 text-[10px]">
+            Already have an ICP account?
+            <Link
+              to="/login"
+              className="text-blue-500 ml-1 text-[10px] md:text-[16px]"
             >
-              {isSubmitting ? (
-                <>
-                  <CircularProgress sx={{ color: "white" }} size={20} /> Signing you up...
-                </>
-              ) : (
-                "Sign up with Internet Identity"
-              )}
-            </button>
-            <p className="mt-5 md:text-[16px] text-gray-600 text-[10px]">
-              Already have a ICP account?
-              <Link
-                to="/login"
-                className="text-blue-500 ml-1 text-[10px] md:text-[16px]"
-              >
-                Sign in here
-              </Link>
-            </p>
-          </div>
+              Sign in here
+            </Link>
+          </p>
         </div>
-        {/* {showVerificationModal && (
-          <VerificationModal
-            onClose={onCloseVerificationModal}
-            user_code={user_code}
-          />
-        )} */}
       </div>
-    );
-  };
-  
-  export default SignUp;
+    </div>
+  );
+};
+
+export default SignUp;
