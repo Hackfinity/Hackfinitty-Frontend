@@ -20,15 +20,13 @@ const SignUp = () => {
   const userRole = location.pathname.split("/");
 
   function getRole() {
-    let user;
     if (userRole[1] === "org-signup") {
-      user = "ORGANIZER";
+      return "ORGANIZER";
     } else if (userRole[1] === "part-signup") {
-      user = "PARTICIPANT";
+      return "PARTICIPANT";
     } else {
-      user = null;
+      return null;
     }
-    return user;
   }
 
   const handleICSignUp = async () => {
@@ -37,32 +35,7 @@ const SignUp = () => {
       const authClient = await AuthClient.create();
       const isAuthenticated = await authClient.isAuthenticated();
 
-      if (!isAuthenticated) {
-        await authClient.login({
-          identityProvider: 'https://identity.ic0.app',
-          onSuccess: async () => {
-            const identity = await authClient.getIdentity();
-            const principal = identity.getPrincipal().toText();
-
-            const role = getRole();
-
-            setSuccessMessage("Sign up successful!");
-            setIsSubmitting(false);
-
-            // Update Redux store
-            dispatch(setAccessToken({ accessToken: principal }));
-            dispatch(setLoggedInUserRef({ loggedInUserRef: principal }));
-            dispatch(setCurrentUserRole({ currentUserRole: role }));
-            navigate(role === "ORGANIZER" ? "/organizer" : "/participant");
-          },
-          onError: (err) => {
-            setErrorMessage(`Sign up failed: ${err.message}`);
-            setIsSubmitting(false);
-          },
-        });
-      } else {
-        // User is already authenticated
-        const identity = await authClient.getIdentity();
+      const handleSuccess = async (identity) => {
         const principal = identity.getPrincipal().toText();
         const role = getRole();
 
@@ -73,7 +46,31 @@ const SignUp = () => {
         dispatch(setAccessToken({ accessToken: principal }));
         dispatch(setLoggedInUserRef({ loggedInUserRef: principal }));
         dispatch(setCurrentUserRole({ currentUserRole: role }));
-        navigate(role === "ORGANIZER" ? "/organizer" : "/participant");
+
+        if (role === "ORGANIZER") {
+          navigate("/organizer");
+        } else if (role === "PARTICIPANT") {
+          navigate("/participant");
+        } else {
+          setErrorMessage("Invalid role");
+        }
+      };
+
+      if (!isAuthenticated) {
+        await authClient.login({
+          identityProvider: 'https://identity.ic0.app',
+          onSuccess: async () => {
+            const identity = await authClient.getIdentity();
+            await handleSuccess(identity);
+          },
+          onError: (err) => {
+            setErrorMessage(`Sign up failed: ${err.message}`);
+            setIsSubmitting(false);
+          },
+        });
+      } else {
+        const identity = await authClient.getIdentity();
+        await handleSuccess(identity);
       }
     } catch (err) {
       setErrorMessage(`Error initializing AuthClient: ${err.message}`);
@@ -121,15 +118,6 @@ const SignUp = () => {
               "Sign up with Internet Identity"
             )}
           </button>
-          <p className="mt-5 md:text-[16px] text-gray-600 text-[10px]">
-            Already have an ICP account?
-            <Link
-              to="/login"
-              className="text-blue-500 ml-1 text-[10px] md:text-[16px]"
-            >
-              Sign in here
-            </Link>
-          </p>
         </div>
       </div>
     </div>

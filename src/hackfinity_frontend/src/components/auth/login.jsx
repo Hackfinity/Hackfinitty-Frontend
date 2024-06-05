@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../common/Navbar";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {
   setCurrentUserRole,
@@ -35,29 +35,32 @@ const LogIn = () => {
       const authClient = await AuthClient.create();
       const isAuthenticated = await authClient.isAuthenticated();
 
+      const handleSuccess = async (identity) => {
+        const principal = identity.getPrincipal().toText();
+        // Assuming verifyIdentity returns a role or a boolean
+        const role = await my_project.verifyIdentity(principal); 
+
+        if (role) {
+          setSuccessMessage("Login successful!");
+          setIsSubmitting(false);
+
+          // Update Redux store
+          dispatch(setAccessToken({ accessToken: principal }));
+          dispatch(setLoggedInUserRef({ loggedInUserRef: principal }));
+          dispatch(setCurrentUserRole({ currentUserRole: role }));
+          handleHome(role);
+        } else {
+          setErrorMessage("Identity verification failed.");
+          setIsSubmitting(false);
+        }
+      };
+
       if (!isAuthenticated) {
         await authClient.login({
           identityProvider: 'https://identity.ic0.app',
           onSuccess: async () => {
             const identity = await authClient.getIdentity();
-            const userNumber = await identity.getDelegation().identity;
-            const isVerified = await my_project.verifyIdentity(BigInt(userNumber));
-
-            if (isVerified) {
-              const role = identity.getRole();  // Adjust this line based on how you obtain the role
-
-              setSuccessMessage("Login successful!");
-              setIsSubmitting(false);
-
-              // Update Redux store
-              dispatch(setAccessToken({ accessToken: null }));
-              dispatch(setLoggedInUserRef({ loggedInUserRef: null }));
-              dispatch(setCurrentUserRole({ currentUserRole: role }));
-              handleHome(role);
-            } else {
-              setErrorMessage("Identity verification failed.");
-              setIsSubmitting(false);
-            }
+            await handleSuccess(identity);
           },
           onError: (err) => {
             setErrorMessage(`Login failed: ${err.message}`);
@@ -67,16 +70,7 @@ const LogIn = () => {
       } else {
         // User is already authenticated
         const identity = await authClient.getIdentity();
-        const role = identity.getRole();  // Adjust this line based on how you obtain the role
-
-        setSuccessMessage("Login successful!");
-        setIsSubmitting(false);
-
-        // Update Redux store
-        dispatch(setAccessToken({ accessToken: null }));
-        dispatch(setLoggedInUserRef({ loggedInUserRef: null }));
-        dispatch(setCurrentUserRole({ currentUserRole: role }));
-        handleHome(role);
+        await handleSuccess(identity);
       }
     } catch (err) {
       setErrorMessage(`Error initializing AuthClient: ${err.message}`);
@@ -119,15 +113,7 @@ const LogIn = () => {
               "Log in with Internet Identity"
             )}
           </button>
-          <p className="mt-5 md:text-[16px] text-gray-600 text-[10px]">
-            Don't have an account?
-            <Link
-              to="/signup"
-              className="text-custom-blue ml-1 md:text-[16px] text-[10px]"
-            >
-              Sign up here
-            </Link>
-          </p>
+        
         </div>
       </div>
     </div>
