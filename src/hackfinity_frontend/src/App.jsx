@@ -5,6 +5,9 @@ import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom
 import LandingPage from "./components/common/LandingPage";
 import NoPage from "./components/common/NoPage";
 import SpinLoading from "./components/utils/SpinLoading";
+import participantSignup from './components/auth/participantSignup';
+import SignUp from './components/auth/SignUp';
+import Login from '../src/components/auth/login';
 
 const App = () => {
   return (
@@ -15,8 +18,11 @@ const App = () => {
             <Route path="*" element={<NoPage />} />
             {/* COMMON ROUTES */}
             <Route index element={<LandingPage />} />
-            {/* Uncomment and add the path prop if you want to use the SignUp route again */}
-            {/* <Route path="/org-signup" element={<SignUp />} /> */}
+          <Route path="/org-signup" element={<SignUp />} />
+          <Route path="/part-signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="unauthorized" element={<UnAuthorized />} />
+          
           </Routes>
         </Router>
       </Suspense>
