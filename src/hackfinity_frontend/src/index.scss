@@ -3,6 +3,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* Add this to your global stylesheet */
+:root {
+  --pinkish: #FFB6C1; /* Light Pink */
+  --yellowish-purple: #D8A3A3; /* Light Purple */
+  --custom-blue: #0E90D7; /* Blue */
+  --text-custom-blue: #00BFFF; /* Bright Blue */
+}
+
 
 body {
   background-color: #e2edf1;

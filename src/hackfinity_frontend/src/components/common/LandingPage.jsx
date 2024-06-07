@@ -68,20 +68,19 @@ const LandingPage = () => {
 
   return (
     <div>
-      <Navbar openModal={openModal} />
+     <Navbar openModal={openModal} />
       <BasicModal openModal={openSignUpModal} handleClose={closeModal} />
-      <div className="w-full h-screen text-center">
-        <div className="w-full text-center relative ">
-          <div className=" mx-auto p-2 flex justify-center">
+      <div className="w-full h-screen text-center" style={{ backgroundColor: 'var(--yellowish-purple)' }}>
+        {/* Adjusted div for background color */}
+        <div className="w-full text-center relative " style={{ backgroundColor: 'var(--pinkish)' }}>
+          {/* Content adjusted for pinkish background */}
+          <div className="mx-auto p-2 flex justify-center">
             <div className="md:mt-[60px] mt-5">
-              <h1 className="text-[24px]   animate-text text-[#000] items-center text-center md:text-4xl  lg:text-6xl font-extrabold  tracking-wider px-3">
-                Unleashing Innovation, <br />
-                One Hackathon at a Time!
+              <h1 className="text-[24px] animate-text text-[#000] items-center text-center md:text-4xl lg:text-6xl font-extrabold tracking-wider px-3" style={{ color: 'var(--text-custom-blue)' }}>
+                Unleashing Innovation, <br />One Hackathon at a Time!
               </h1>
-              <p className="text-[12px] mt-4  md:text-[18px] text-center md:w-[588px] md:mt-7 lg:ml-20 text-[#4d4d4d]">
-                Join a global community of thinkers, dreamers, and doers.
-                Whether you're here to conquer challenges or host groundbreaking
-                hackathons, this is where innovation takes center stage.
+              <p className="text-[12px] mt-4 md:text-[18px] text-center md:w-[588px] md:mt-7 lg:ml-20 text-[#4d4d4d]" style={{ color: 'var(--text-custom-blue)' }}>
+                Join a global community of thinkers, dreamers, and doers. Whether you're here to conquer challenges or host groundbreaking hackathons, this is where innovation takes center stage.
               </p>
             </div>
           </div>

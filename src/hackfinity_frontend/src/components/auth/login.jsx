@@ -29,6 +29,18 @@ const LogIn = () => {
     }
   };
 
+  const determineRole = (principal) => {
+    // Example logic to determine the role based on principal
+    // Replace this with your actual logic
+    if (principal.startsWith("aaaaa")) {
+      return "ADMIN";
+    } else if (principal.startsWith("bbbbb")) {
+      return "ORGANIZER";
+    } else {
+      return "PARTICIPANT";
+    }
+  };
+
   const handleICLogin = async () => {
     setIsSubmitting(true);
     try {
@@ -37,8 +49,7 @@ const LogIn = () => {
 
       const handleSuccess = async (identity) => {
         const principal = identity.getPrincipal().toText();
-        // Assuming verifyIdentity returns a role or a boolean
-        const role = await my_project.verifyIdentity(principal); 
+        const role = determineRole(principal);
 
         if (role) {
           setSuccessMessage("Login successful!");

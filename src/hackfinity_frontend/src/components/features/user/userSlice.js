@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 
 const userSlice = createSlice({
@@ -10,26 +9,22 @@ const userSlice = createSlice({
   },
   reducers: {
     setLoggedInUserRef: (state, action) => {
-      const { loggedInUserRef } = action.payload;
-      state.loggedInUserRef = loggedInUserRef;
+      state.loggedInUserRef = action.payload.loggedInUserRef;
     },
     setCurrentUserRole: (state, action) => {
-      const { currentUserRole } = action.payload;
-      state.currentUserRole = currentUserRole;
+      state.currentUserRole = action.payload.currentUserRole;
     },
     setAccessToken: (state, action) => {
-      const { accessToken } = action.payload;
-      state.accessToken = accessToken;
+      state.accessToken = action.payload.accessToken;
     },
   },
   // extraReducers: {},
 });
 
-export const { setLoggedInUserRef, setCurrentUserRole, setAccessToken } =
-  userSlice.actions;
+export const { setLoggedInUserRef, setCurrentUserRole, setAccessToken } = userSlice.actions;
 
-export const selectLoggedInUserRef = (state) => state?.user?.loggedInUserRef;
-export const selectCurrentUserRole = (state) => state?.user?.currentUserRole;
-export const selectAccessToken = (state) => state?.user?.accessToken;
+export const selectLoggedInUserRef = (state) => state.user.loggedInUserRef;
+export const selectCurrentUserRole = (state) => state.user.currentUserRole;
+export const selectAccessToken = (state) => state.user.accessToken;
 
 export default userSlice.reducer;

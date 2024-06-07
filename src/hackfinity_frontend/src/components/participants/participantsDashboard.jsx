@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import ParticipantsContent from "./ParticipantsContent";
 
-function participantsDashboard() {
+const ParticipantDashboard = () => {
   return (
-    <div>
-      <h1>my hackathons</h1>
+    <div className="bg-white p-8 right-side min-h-screen min-w-full">
+      <ParticipantsContent />
     </div>
-  )
-}
+  );
+};
 
-export default participantsDashboard
+export default ParticipantDashboard;

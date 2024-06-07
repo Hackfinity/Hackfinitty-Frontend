@@ -17,17 +17,17 @@ const SignUp = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
-  const userRole = location.pathname.split("/");
+  const userRole = location.pathname.split("/")[1]; // Extract role from URL
 
-  function getRole() {
-    if (userRole[1] === "org-signup") {
+  const getRole = () => {
+    if (userRole === "org-signup") {
       return "ORGANIZER";
-    } else if (userRole[1] === "part-signup") {
+    } else if (userRole === "part-signup") {
       return "PARTICIPANT";
     } else {
       return null;
     }
-  }
+  };
 
   const handleICSignUp = async () => {
     setIsSubmitting(true);
@@ -48,9 +48,9 @@ const SignUp = () => {
         dispatch(setCurrentUserRole({ currentUserRole: role }));
 
         if (role === "ORGANIZER") {
-          navigate("/organizer");
+          navigate("/organizer-dashboard");
         } else if (role === "PARTICIPANT") {
-          navigate("/participant");
+          navigate("/participant-dashboard");
         } else {
           setErrorMessage("Invalid role");
         }
@@ -58,7 +58,7 @@ const SignUp = () => {
 
       if (!isAuthenticated) {
         await authClient.login({
-          identityProvider: 'https://identity.ic0.app',
+          identityProvider: "https://identity.ic0.app",
           onSuccess: async () => {
             const identity = await authClient.getIdentity();
             await handleSuccess(identity);
