@@ -1,17 +1,19 @@
 import React from "react";
 import HackathonMedia from "../../utils/HackathonMedia";
 import { LinearProgress } from "@mui/material";
-import avatar2 from '../../../assets/icons8-climate-64.png'
+import avatar2 from '../../../assets/icons8-climate-64.png';
+import avatar1 from '../../../assets/404.png';
+import cover1 from '../../../assets/tech.jpg'
 
 const OpenHackathon = () => {
   const loading = false; // Dummy state for loading
   const hackathonsPayload = [
     {
-      cover_image_url: "cover_image_1.jpg",
-      avatar_url: "avatar_1.jpg",
-      title: "Hackathon 1",
-      highlight: "Highlight 1",
-      description: "Description for Hackathon 1",
+      cover_image_url: cover1,
+      avatar_url: avatar1,
+      title: "Megathon",
+      highlight: "Our first mega hackathon",
+      description: "Join us on chain ",
     },
     {
       cover_image_url: avatar2, // Corrected avatar URL

@@ -21,8 +21,9 @@ const Sidebar = () => {
   return (
     <div className=" flex ">
       <div className="  bg-light-blue p-4 h-screen fixed left-0 top-0 w-[250px] ">
-        <div className="flex justify-between">
-          <img src={logo} alt="" style={{ width: "60px", height: "60px" }} />
+      <div className="flex flex-col items-center">
+          <img src={logo} alt="Logo" className="w-16 h-16 mb-4" />
+          <h1>100% on chain</h1> {/* Assuming user profile is available */}
         </div>
         <button
           onClick={() => navigate("/participant/dashboard")}
