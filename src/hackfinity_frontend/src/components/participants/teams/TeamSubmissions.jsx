@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { selectCurrentParticipantDetail } from "../../../features/participant/participantSlice";
+import { selectCurrentParticipantDetail } from "../../features/participants/participantSlice";
 import {
   getLearnerInvitedTeams,
   getLearnerCreatedTeams,

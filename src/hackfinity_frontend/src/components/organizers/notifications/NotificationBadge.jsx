@@ -1,24 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Badge } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import { getOrganizerNotifications } from "../../../api/notifications/notifications";
-import NotificationDialog from "../../participants/notifications/NotificationDialog";
+import NotificationDialog from "../../organizers/notifications/NotificationBadge";
 
-export default function NotificationBadge({ organizerId }) {
+export default function NotificationBadge() {
   const [openNotificationsDialog, setOpenNotificationsDialog] = useState(false);
-  const [notifications, setNotifications] = useState([]);
 
-  const fetchNotifications = () => {
-    getOrganizerNotifications(organizerId).then((res) => {
-      if (res.status === 200) {
-        setNotifications(res.data);
-      }
-    });
-  };
-
-  useEffect(() => {
-    fetchNotifications();
-  }, []);
+  // Mock notifications data
+  const notifications = [
+    { id: 1, message: "Notification 1", is_read: false },
+    { id: 2, message: "Notification 2", is_read: true },
+    { id: 3, message: "Notification 3", is_read: false },
+  ];
 
   const handleNotificationsBadgeClick = () => {
     setOpenNotificationsDialog(true);
@@ -45,7 +38,7 @@ export default function NotificationBadge({ organizerId }) {
         open={openNotificationsDialog}
         onClose={handleClose}
         notifications={notifications}
-        refreshNotifications={fetchNotifications}
+        refreshNotifications={() => {}} // Placeholder for the refresh function
       />
     </>
   );

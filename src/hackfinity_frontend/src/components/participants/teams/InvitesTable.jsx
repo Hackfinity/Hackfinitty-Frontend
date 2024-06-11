@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 import { LinearProgress, Chip, Button } from "@mui/material";
 import { InfoOutlined } from "@mui/icons-material";
 import { green, red, yellow } from "@mui/material/colors";
-import CustomDataGrid from "../../common/utils/CustomDataGrid";
-import { setInviteRef } from "../../../features/invite/inviteSlice";
+import CustomDataGrid from "../../utils/CustomDataGrid";
+import { setInviteRef } from "../../features/invite/inviteSlice";
 const InvitesTable = ({ invitesMiniData, loading }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -95,22 +95,7 @@ const InvitesTable = ({ invitesMiniData, loading }) => {
           </p>
         </div>
       )}
-      {/* {loading && <LinearProgress />}
-      {!loading && invitesMiniData.length > 0 && (
-        <CustomDataGrid
-          sx={{ mt: 3 }}
-          rows={invitesMiniData}
-          columns={columns}
-        />
-      )}{" "}
-      {!loading && invitesMiniData.length === 0 && (
-        <div className="mt-4 bg-white w-3/4 p-4 rounded shadow flex gap-5 items-center">
-          <InfoOutlined sx={{ color: "red" }} />
-          <p className="text-bold text-black">
-            You do not have any team invites at the moment. Keep exploring!
-          </p>
-        </div>
-      )} */}
+    
     </div>
   );
 };

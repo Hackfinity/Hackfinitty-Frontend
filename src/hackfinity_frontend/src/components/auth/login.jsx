@@ -37,7 +37,7 @@ const LogIn = () => {
     } else if (principal.startsWith("bbbbb")) {
       return "ORGANIZER";
     } else {
-      return "PARTICIPANT";
+      return "ORGANIZER";
     }
   };
 
@@ -114,7 +114,7 @@ const LogIn = () => {
           <button
             onClick={handleICLogin}
             disabled={isSubmitting}
-            className={`${handleHover()} w-full text-[13px] md:text-[16px] bg-custom-blue text-white py-2 mt-4 rounded hover:bg-white hover:text-custom-blue hover:border-2 hover:border-custom-blue`}
+            className={`${handleHover()} w-full text-[13px] md:text-[16px] bg-custom-blue text-white py-2 mt-4 rounded`}
           >
             {isSubmitting ? (
               <>

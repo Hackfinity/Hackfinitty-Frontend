@@ -22,7 +22,7 @@ const Sidebar = () => {
     <div className=" flex ">
       <div className="  bg-light-blue p-4 h-screen fixed left-0 top-0 w-[250px] ">
         <div className="flex justify-between">
-          <img src={logo} alt="" />
+          <img src={logo} alt="" style={{ width: "60px", height: "60px" }} />
         </div>
         <button
           onClick={() => navigate("/participant/dashboard")}

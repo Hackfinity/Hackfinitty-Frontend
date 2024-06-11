@@ -1,5 +1,5 @@
 import React from "react";
-import ParticipantsContent from "./ParticipantsContent";
+import ParticipantsContent from "./participantsContent";
 
 const ParticipantDashboard = () => {
   return (

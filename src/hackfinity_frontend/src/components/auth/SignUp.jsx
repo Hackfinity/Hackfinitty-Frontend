@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../common/Navbar";
-import { useNavigate, useLocation, Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
   setCurrentUserRole,
   setAccessToken,
@@ -18,6 +18,50 @@ const SignUp = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const userRole = location.pathname.split("/")[1]; // Extract role from URL
+  const accessToken = useSelector((state) => state.user.accessToken);
+
+  useEffect(() => {
+    const checkAuthentication = async () => {
+      setIsSubmitting(true);
+      try {
+        const authClient = await AuthClient.create();
+        const isAuthenticated = await authClient.isAuthenticated();
+        setIsSubmitting(false);
+        if (isAuthenticated) {
+          const identity = await authClient.getIdentity();
+          const principal = identity.getPrincipal().toText();
+          const role = getRole();
+          dispatch(setAccessToken({ accessToken: principal }));
+          dispatch(setLoggedInUserRef({ loggedInUserRef: principal }));
+          dispatch(setCurrentUserRole({ currentUserRole: role }));
+          if (role === "ORGANIZER") {
+            navigate("/organizer-dashboard");
+          } else if (role === "PARTICIPANT") {
+            navigate("/participant-dashboard");
+          } else {
+            setErrorMessage("Invalid role");
+          }
+        }
+      } catch (err) {
+        setErrorMessage(`Error authenticating user: ${err.message}`);
+        setIsSubmitting(false);
+      }
+    };
+
+    if (accessToken) {
+      // User is already authenticated, redirect to dashboard
+      if (userRole === "org-signup") {
+        navigate("/organizer");
+      } else if (userRole === "part-signup") {
+        navigate("/participant");
+      } else {
+        setErrorMessage("Invalid role");
+      }
+    } else {
+      // User is not authenticated, check authentication
+      checkAuthentication();
+    }
+  }, [accessToken, navigate, userRole, dispatch]);
 
   const getRole = () => {
     if (userRole === "org-signup") {
@@ -34,43 +78,31 @@ const SignUp = () => {
     try {
       const authClient = await AuthClient.create();
       const isAuthenticated = await authClient.isAuthenticated();
-
-      const handleSuccess = async (identity) => {
-        const principal = identity.getPrincipal().toText();
-        const role = getRole();
-
-        setSuccessMessage("Sign up successful!");
-        setIsSubmitting(false);
-
-        // Update Redux store
-        dispatch(setAccessToken({ accessToken: principal }));
-        dispatch(setLoggedInUserRef({ loggedInUserRef: principal }));
-        dispatch(setCurrentUserRole({ currentUserRole: role }));
-
-        if (role === "ORGANIZER") {
-          navigate("/organizer-dashboard");
-        } else if (role === "PARTICIPANT") {
-          navigate("/participant-dashboard");
-        } else {
-          setErrorMessage("Invalid role");
-        }
-      };
-
-      if (!isAuthenticated) {
+      if (isAuthenticated) {
+        setSuccessMessage("Authentication successful. You may close this page.");
+      } else {
         await authClient.login({
           identityProvider: "https://identity.ic0.app",
           onSuccess: async () => {
             const identity = await authClient.getIdentity();
-            await handleSuccess(identity);
+            const principal = identity.getPrincipal().toText();
+            const role = getRole();
+            dispatch(setAccessToken({ accessToken: principal }));
+            dispatch(setLoggedInUserRef({ loggedInUserRef: principal }));
+            dispatch(setCurrentUserRole({ currentUserRole: role }));
+            if (role === "ORGANIZER") {
+              navigate("/organizer-dashboard");
+            } else if (role === "PARTICIPANT") {
+              navigate("/participant-dashboard");
+            } else {
+              setErrorMessage("Invalid role");
+            }
           },
           onError: (err) => {
             setErrorMessage(`Sign up failed: ${err.message}`);
             setIsSubmitting(false);
           },
         });
-      } else {
-        const identity = await authClient.getIdentity();
-        await handleSuccess(identity);
       }
     } catch (err) {
       setErrorMessage(`Error initializing AuthClient: ${err.message}`);

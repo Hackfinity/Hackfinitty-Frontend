@@ -9,22 +9,26 @@ const userSlice = createSlice({
   },
   reducers: {
     setLoggedInUserRef: (state, action) => {
-      state.loggedInUserRef = action.payload.loggedInUserRef;
+      const { loggedInUserRef } = action.payload;
+      state.loggedInUserRef = loggedInUserRef;
     },
     setCurrentUserRole: (state, action) => {
-      state.currentUserRole = action.payload.currentUserRole;
+      const { currentUserRole } = action.payload;
+      state.currentUserRole = currentUserRole;
     },
     setAccessToken: (state, action) => {
-      state.accessToken = action.payload.accessToken;
+      const { accessToken } = action.payload;
+      state.accessToken = accessToken;
     },
   },
   // extraReducers: {},
 });
 
-export const { setLoggedInUserRef, setCurrentUserRole, setAccessToken } = userSlice.actions;
+export const { setLoggedInUserRef, setCurrentUserRole, setAccessToken } =
+  userSlice.actions;
 
-export const selectLoggedInUserRef = (state) => state.user.loggedInUserRef;
-export const selectCurrentUserRole = (state) => state.user.currentUserRole;
-export const selectAccessToken = (state) => state.user.accessToken;
+export const selectLoggedInUserRef = (state) => state?.user?.loggedInUserRef;
+export const selectCurrentUserRole = (state) => state?.user?.currentUserRole;
+export const selectAccessToken = (state) => state?.user?.accessToken;
 
 export default userSlice.reducer;

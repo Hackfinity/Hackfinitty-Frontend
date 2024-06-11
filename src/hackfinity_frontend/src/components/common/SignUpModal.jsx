@@ -10,11 +10,11 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   bgcolor: "background.paper",
-  border: "2px solid #089BD9",
+  border: "2px solid #6B46C1",  // Tailwind's 'purple-700'
   boxShadow: 24,
   p: 4,
   borderRadius: "10px",
-  width: '80%',
+  width: '90%',
   maxWidth: 500,
 };
 
@@ -36,25 +36,24 @@ export default function BasicModal({ openModal, handleClose }) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="md:w-[500px] md:h-[250px]">
+        <Box className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-2 border-purple-700 shadow-xl p-6 rounded-lg w-11/12 max-w-md">
           <Typography
             variant="h6"
             component="h2"
-            sx={customStyles}
-            className="md:text-[24px] text-[18px]"
+            className="font-lexend font-medium text-center mb-5 text-xl md:text-2xl"
           >
             Join as a participant or an organizer
           </Typography>
           <Box className="flex justify-around mt-4">
             <button
               onClick={() => navigate("/part-signup")}
-              className="w-[130px] md:w-[150px] bg-custom-blue text-white py-2 rounded md:text-[16px] text-[14px] transition-transform transform hover:-translate-y-1"
+              className="w-32 md:w-36 bg-purple-700 text-white py-2 rounded-lg text-sm md:text-base transition-transform transform hover:-translate-y-1 hover:bg-purple-800 shadow-lg"
             >
               I am a Participant
             </button>
             <button
               onClick={() => navigate("/org-signup")}
-              className="w-[130px] md:w-[150px] bg-gray-300 text-custom-blue py-2 rounded md:text-[16px] text-[14px] transition-transform transform hover:-translate-y-1"
+              className="w-32 md:w-36 bg-gray-300 text-purple-700 py-2 rounded-lg text-sm md:text-base transition-transform transform hover:-translate-y-1 hover:bg-gray-400 shadow-lg"
             >
               I am an Organizer
             </button>

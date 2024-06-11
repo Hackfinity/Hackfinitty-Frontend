@@ -9,10 +9,14 @@ export default {
         "custom-bg": "var(--Blue, #2B59FF)",
       },
       colors: {
-        "custom-blue": "#009ebd",
-        "custom-grey": "#EDEDED",
-        "custom-purple": "#A162F7",
-        "custom-light-grey": "#9B9B9B",
+        'custom-blue': '#009ebd',
+        'custom-purple': '#6D28D9',
+        'custom-gray': '#F3F4F6',
+        'custom-white': '#FFFFFF',
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        serif: ['Merriweather', 'serif'],
       },
       screens: {
         xs: "300px",
