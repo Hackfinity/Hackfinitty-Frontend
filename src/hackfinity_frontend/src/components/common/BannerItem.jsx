@@ -2,11 +2,8 @@
 "use client";
 import React from "react";
 import FeatureBanner from "./FeatureBanner";
-import icon3 from '../../assets/icons8-climate-64.png';
-import icon1 from '../../assets/job.jpeg';
-import technologies from '../../assets/tech.jpg';
-import icon2 from '../../assets/icons8-unite-arrows-48.png';
-import icon4 from '../../assets/icons8-social-48.png';
+import icon1 from '../../assets/robot2.png';
+import technologies from '../../assets/tech.jpg'
 
 const BannerItem = () => {
   return (
@@ -26,20 +23,20 @@ const BannerItem = () => {
           text=" Encourage the exploration and development of cutting-edge technologies that have the potential to transform industries."
         />
         <FeatureBanner
-          icon={icon3}
+          icon="/assets/icon5.png"
           heading="Climate Change"
           text=" Foster solutions that contribute to mitigating the impact of climate change and promoting environmental sustainability.
 
           "
         />
         <FeatureBanner
-          icon={icon2}
+          icon="/assets/icon3.png"
           heading="Accessibility and Inclusion"
           text=" Advocate for projects that prioritize accessibility and inclusion for all individuals, regardless of abilities."
         />
 
         <FeatureBanner
-          icon={icon4}
+          icon="/assets/icon4.png"
           heading="Social Impact"
           text="Promote solutions that address social challenges and have a positive impact on communities."
         />
