@@ -12,6 +12,7 @@ const OrgSidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const pathnameArray = location.pathname.split("/");
+
   useEffect(() => {
     if (pathnameArray[2] === undefined || pathnameArray[2] === "dashboard") {
       setActivePage("dashboard");
@@ -23,56 +24,63 @@ const OrgSidebar = () => {
       setActivePage("grades");
     }
   }, [pathnameArray]);
+
+  const handleButtonClick = (page) => {
+    setActivePage(page);
+    navigate(`/organizer/${page}`);
+  };
+
   return (
     <div className="flex">
       <div className="bg-light-blue w-[250px] p-5 h-screen fixed left-0 top-0">
-        <div className="flex justify-between">
-          <img src={logo} alt="" />
+      <div className="flex flex-col items-center">
+          <img src={logo} alt="Logo" className="w-16 h-16 mb-4" />
+          <h1>100% on chain</h1> 
         </div>
         <button
-          onClick={() => navigate("/organizer/dashboard")}
+          onClick={() => handleButtonClick("dashboard")}
           className={`py-2 pl-4 pr-5 border rounded-md mt-8 ${
             activePage === "dashboard" && "border-custom-blue"
           }`}
         >
           <div className="flex items-center gap-3">
-            <DashboardCustomizeOutlinedIcon className="w-6 h-6 text-custom-blue" />
+            <DashboardCustomizeOutlinedIcon className="w-5 h-5 text-custom-blue" />
             <span className="text-sm">Dashboard</span>
           </div>
         </button>
 
         <button
-          onClick={() => navigate("/organizer/hackathons")}
+          onClick={() => handleButtonClick("hackathons")}
           className={`py-2 pl-4 pr-5 border rounded-md mt-3 ${
             activePage === "hackathons" && "border-custom-blue"
           }`}
         >
           <div className="flex items-center gap-3">
-            <LayersOutlinedIcon className="w-6 h-6 text-custom-blue" />
+            <LayersOutlinedIcon className="w-5 h-5 text-custom-blue" />
             <span className="text-sm">Hackathons</span>
           </div>
         </button>
 
         <button
-          onClick={() => navigate("/organizer/submissions")}
+          onClick={() => handleButtonClick("submissions")}
           className={`py-2 pl-4 pr-5 border rounded-md mt-3 ${
             activePage === "submissions" && "border-custom-blue"
           }`}
         >
           <div className="flex items-center gap-3">
-            <FolderOutlinedIcon className="w-6 h-6 text-custom-blue" />
+            <FolderOutlinedIcon className="w-5 h-5 text-custom-blue" />
             <span className="text-sm">Submissions</span>
           </div>
         </button>
-        
+
         <button
-          onClick={() => navigate("/organizer/grades")}
+          onClick={() => handleButtonClick("grades")}
           className={`py-2 pl-4 pr-5 border rounded-md mt-3 ${
             activePage === "grades" && "border-custom-blue"
           }`}
         >
           <div className="flex items-center gap-3">
-            <Grading className="w-6 h-6 text-custom-blue" />
+            <Grading className="w-5 h-5 text-custom-blue" />
             <span className="text-sm">Grades</span>
           </div>
         </button>

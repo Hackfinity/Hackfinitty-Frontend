@@ -1,63 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import { Avatar, Menu, MenuItem } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import NotificationBadge from "../notifications/NotificationBadge";
 
-const OrgProfile = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const navigate = useNavigate();
-
-  // Dummy profile data
-  const dummyProfile = {
-    id: 1,
-    name: "John Doe",
-    profile_image_url: "https://via.placeholder.com/150",
-  };
-
+const OrgProfile = ({ status }) => {
+  const [anchorElNav, setAnchorElNav] = useState(null);
   const openProfileMenu = (event) => setAnchorElNav(event.currentTarget);
   const closeProfileMenu = () => setAnchorElNav(null);
 
-  const handleLogOut = () => {
-    // Handle logout action
-  };
-
   return (
-    <div className="flex gap-10 items-center mt-2">
-      <NotificationBadge organizerId={dummyProfile.id} />
+    <div className="flex gap-10 items-center bg-light-blue">
       <div className="relative inline-block">
-        <div className="flex border p-1 border-custom-grey rounded-lg space-x-2 shadow-md transition-transform transform hover:-translate-y-1 cursor-pointer">
-          <div onClick={openProfileMenu} className="flex gap-5 items-center">
+        <div
+          className="flex items-center border transition-transform transform hover:-translate-y-1 shadow-md p-2 border-gray-300 rounded-lg space-x-2 cursor-pointer bg-white"
+          onClick={openProfileMenu}
+        >
+          {status === "no_profile" ? (
+            <span className="text-gray-600">No Profile</span>
+          ) : (
             <>
               <Avatar
                 alt="Profile pic"
-                src={dummyProfile.profile_image_url}
-                sx={{ width: "24px", height: "24px" }}
+                src="" // Placeholder for the profile image URL
+                sx={{ width: 36, height: 36 }}
               />
-              <p className="text-xs mr-3">{dummyProfile.name}</p>
+              <p className="text-xs text-gray-700 mr-3">Organization Name</p> {/* Placeholder for the organization name */}
             </>
-          </div>
-
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorElNav}
-            open={Boolean(anchorElNav)}
-            onClose={closeProfileMenu}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "left",
-            }}
-            sx={{ pt: 4, marginTop: "55px", marginLeft: "-20px" }}
-          >
-            <MenuItem onClick={() => navigate("/organizer/profile")}>
-              Profile
-            </MenuItem>
-            <MenuItem onClick={handleLogOut}>Logout</MenuItem>
-          </Menu>
+          )}
         </div>
+
+        <Menu
+          id="menu-appbar"
+          anchorEl={anchorElNav}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "right",
+          }}
+          keepMounted
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          open={Boolean(anchorElNav)}
+          onClose={closeProfileMenu}
+          sx={{ pt: 4, mt: 1 }}
+        >
+          <MenuItem onClick={closeProfileMenu} className="hover:bg-gray-100">
+            Profile
+          </MenuItem>
+          <MenuItem onClick={closeProfileMenu} className="hover:bg-gray-100">
+            Logout
+          </MenuItem>
+        </Menu>
       </div>
     </div>
   );

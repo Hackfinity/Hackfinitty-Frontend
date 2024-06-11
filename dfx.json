@@ -2,8 +2,8 @@
   "canisters": {
     "backend": {
       "main": "src/hackfinity_backend/main.mo",
-      "type": "pull",
-      "id": "6ysat-zaaaa-aaaal-ajg7a-cai"
+      "type": "motoko"
+      
     },
     "frontend": {
       "dependencies": [
