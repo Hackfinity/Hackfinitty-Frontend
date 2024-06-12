@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Avatars from "../common/Avatars";
+import Avatars from "../../assets/404.png";
 import { useNavigate } from "react-router-dom";
 import OrgProfile from "./profile/OrgProfile";
-import { selectOrganizerCode } from "../../features/organizer/organizerSlice";
-import { setSelectedHackathonDetail } from "../../features/hackathon/hackathonSlice";
+import { selectOrganizerCode } from "../features/organizer/organizersSlice";
+import { setSelectedHackathonDetail } from "../features/hackathon/hackathonSlice";
 import { getOrganizerHackathons } from "../../api/hackathons/hackathons";
-import HackathonMedia from "../common/utils/HackathonMedia";
+import HackathonMedia from "../utils/HackathonMedia";
 import { LinearProgress } from "@mui/material";
 
 const OrgSubmissionPage = () => {

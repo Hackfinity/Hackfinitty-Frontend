@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { selectOrganizerCode } from "../../features/organizer/organizerSlice";
+import { selectOrganizerCode } from "../features/organizer/organizerSlice";
 import { useSelector } from "react-redux";
 import {
   getHackathonGradingList,
@@ -11,7 +11,7 @@ import {
   getKenyanGrades,
 } from "../../api/grades/grades";
 import { Grading } from "@mui/icons-material";
-import CustomDataGrid from "../common/utils/CustomDataGrid";
+import CustomDataGrid from "../utils/CustomDataGrid";
 import {
   Box,
   FormControl,

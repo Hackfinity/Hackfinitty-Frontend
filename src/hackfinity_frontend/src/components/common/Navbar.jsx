@@ -10,7 +10,11 @@ const Navbar = ({ openModal }) => {
 
   return (
     <nav className="flex flex-col md:flex md:flex-row py-4 md:py-6 md:justify-between md:items-center navbar">
+      
+      <div className="flex flex-col items-center">
       <img src={logo} alt="logo" className="ml-5 md:w-32 w-20" />
+          <h1>100% on chain</h1> 
+        </div>
       <div
         onClick={() => setOpen(!open)}
         className="text-3xl absolute right-8 top-2 cursor-pointer md:hidden text-black"

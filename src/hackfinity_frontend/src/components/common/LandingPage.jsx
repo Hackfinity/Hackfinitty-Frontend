@@ -9,6 +9,9 @@ import Footer from "./Footer";
 import avatar1 from '../../assets/maria.jpg';
 import avatar2 from '../../assets/Herbert_Portrait.jpg';
 import CubeAnimation from "./SpinningCube";
+import image1 from '../../assets/tech.jpg';
+import image2 from '../../assets/difinity.png';
+import image3 from '../../assets/DFINITY_logo_-_dark-removebg-preview.png';
 
 const LandingPage = () => {
   const [openSignUpModal, setOpenSignUpModal] = useState(false);
@@ -18,21 +21,21 @@ const LandingPage = () => {
 
   const orgSlides = [
     {
-      image: "https://internetcomputer.org/capabilities",
+      image: image1,
       title: "Tap into Talent",
       description: `Discover the next generation of innovators. Post your hackathon
       on ICP and connect with a global pool of talent. Watch as
       diverse teams bring fresh perspectives to your challenges.`,
     },
     {
-      image: "https://internetcomputer.org/capabilities",
+      image: image2,
       title: "Drive Innovation",
       description: `Challenge participants with real-world problems and witness
       groundbreaking solutions. Fuel innovation within your
       organization and be at the forefront of industry advancements.`,
     },
     {
-      image: "https://unitarmedia.blob.core.windows.net/data/carouselImg1c.jpg",
+      image: image3,
       title: "Boost Your Brand",
       description: `Associate your organization with innovation. Be a catalyst for
       change and join a community that values pushing the boundaries of
@@ -132,7 +135,7 @@ const LandingPage = () => {
           FOR ORGANIZERS
         </h2>
       </div>
-      <section className="mt-10">
+      <section className="mt-10 text-center">
         <div className="mt-6">
           <ImageCarousel slides={orgSlides} />
         </div>
@@ -155,5 +158,7 @@ const LandingPage = () => {
     </div>
   );
 };
+
+
 
 export default LandingPage;

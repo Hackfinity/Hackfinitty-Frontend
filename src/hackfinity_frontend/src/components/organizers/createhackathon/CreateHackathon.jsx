@@ -9,15 +9,15 @@ import {
   Box,
   CircularProgress,
 } from "@mui/material";
-import { themes } from "../../common/utils/ThemeUtils";
+import { themes } from "../../utils/ThemeUtils";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import DatePicker from "../../common/utils/DatePicker";
+import DatePicker from "../../utils/DatePicker";
 import moment from "moment";
-import { selectOrganizerCode } from "../../../features/organizer/organizerSlice";
+import { selectOrganizerCode } from "../../features/organizer/organizerSlice";
 import { createHackathon } from "../../../api/hackathons/hackathons";
 import OrgProfile from "../profile/OrgProfile";
 import { useNavigate } from "react-router-dom";
-import { setCurrentHackathonDetail } from "../../../features/hackathon/hackathonSlice";
+import { setCurrentHackathonDetail } from "../features/hackathon/hackathonSlice";
 import { ChevronRight } from "@mui/icons-material";
 const CreateHackathon = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);

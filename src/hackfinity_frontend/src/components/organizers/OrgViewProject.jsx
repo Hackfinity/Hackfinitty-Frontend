@@ -1,6 +1,6 @@
 import React from "react";
 import OrgProfile from "./profile/OrgProfile";
-import { selectSelectedHackathonDetail } from "../../features/hackathon/hackathonSlice";
+import { selectSelectedHackathonDetail } from "../features/hackathon/hackathonSlice";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
