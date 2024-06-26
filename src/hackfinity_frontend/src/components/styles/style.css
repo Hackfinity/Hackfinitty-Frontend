@@ -24,9 +24,9 @@ h2 {
 
 .btn-login,
 .btn-org {
-  border: 2px solid #089bd9;
+  border: 2px solid hsl(279, 90%, 30%);
   background-color: transparent;
-  color: #089bd9;
+  color: #a108d9;
   padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;

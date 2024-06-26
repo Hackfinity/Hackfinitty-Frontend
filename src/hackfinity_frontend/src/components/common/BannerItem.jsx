@@ -1,48 +1,43 @@
-// BannerItem.jsx
-"use client";
 import React from "react";
 import FeatureBanner from "./FeatureBanner";
-import icon1 from '../../assets/job.jpeg';
-import technologies from '../../assets/tech.jpg';
-import icon2 from '../../assets/icons8-social-48.png';
-import icon3 from '../../assets/icons8-unite-arrows-48.png';
-
+import { FaMoneyBillWave, FaCube, FaLeaf, FaFingerprint, FaHandsHelping } from "react-icons/fa";
 
 const BannerItem = () => {
   return (
-    <div className="bg-banner">
-      <div className=" flex flex-wrap  gap-4   py-10 px-5">
-        <FeatureBanner
-          icon={icon1}
-          heading="Employment and Livelihoods Development"
-          text="Foster solutions that contribute to the development of sustainable employment opportunities and the enhancement of livelihoods.
-
-          "
-        />
-
-        <FeatureBanner
-          icon={technologies}
-          heading="Emerging Technologies"
-          text=" Encourage the exploration and development of cutting-edge technologies that have the potential to transform industries."
-        />
-        <FeatureBanner
-          icon={icon1}
-          heading="Climate Change"
-          text=" Foster solutions that contribute to mitigating the impact of climate change and promoting environmental sustainability.
-
-          "
-        />
-        <FeatureBanner
-          icon={icon3}
-          heading="Accessibility and Inclusion"
-          text=" Advocate for projects that prioritize accessibility and inclusion for all individuals, regardless of abilities."
-        />
-
-        <FeatureBanner
-          icon={icon2}
-          heading="Social Impact"
-          text="Promote solutions that address social challenges and have a positive impact on communities."
-        />
+    <div className="bg-banner py-10">
+      <div className="container mx-auto">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-5xl font-bold text-red tracking-wider">
+            ICP Hackathon Themes
+          </h2>
+        </div>
+        <div className="flex flex-wrap justify-center gap-8">
+          <FeatureBanner
+            icon={<FaMoneyBillWave size={64} color="#9370DB" />}
+            heading="Decentralized Finance (DeFi)"
+            text="Develop innovative solutions that enhance financial inclusivity, security, and accessibility using blockchain technology."
+          />
+          <FeatureBanner
+            icon={<FaCube size={64} color="#9370DB" />}
+            heading="Web3 and Decentralization"
+            text="Explore the future of the internet with decentralized applications and platforms that empower users with more control and privacy."
+          />
+          <FeatureBanner
+            icon={<FaLeaf size={64} color="#9370DB" />}
+            heading="Sustainability and Green Tech"
+            text="Create projects that address environmental challenges and promote sustainability through innovative technology."
+          />
+          <FeatureBanner
+            icon={<FaFingerprint size={64} color="#9370DB" />}
+            heading="Digital Identity"
+            text="Advance the development of secure, user-controlled digital identity solutions that protect privacy and enhance trust."
+          />
+          <FeatureBanner
+            icon={<FaHandsHelping size={64} color="#9370DB" />}
+            heading="Social Good and Impact"
+            text="Promote tech-driven solutions that tackle social issues and create a positive impact in communities worldwide."
+          />
+        </div>
       </div>
     </div>
   );

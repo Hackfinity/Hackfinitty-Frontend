@@ -1,9 +1,13 @@
+/* Import fonts */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&family=Lexend+Exa:wght@200;400;600;700;800&family=Lexend:wght@600&family=Roboto:ital,wght@0,300;0,500;1,300;1,500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100;9..40,400;9..40,700;9..40,800&family=Inter:wght@200;300;400&family=Lexend+Exa:wght@200;400;600;700;800&family=Lexend:wght@600&family=Roboto:ital,wght@0,300;0,500;1,300;1,500&display=swap");
+
+/* Tailwind base, components, and utilities */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* Add this to your global stylesheet */
+
+/* Global styles */
 :root {
   --pinkish: #FFB6C1; /* Light Pink */
   --yellowish-purple: #D8A3A3; /* Light Purple */
@@ -12,24 +16,34 @@
 }
 
 
+.bg-custom-purple {
+  background-color: #b4a5c6; /* Adjust the color code as per your design */
+}
+
+
 body {
-  background-color: #e2edf1;
+ // background-color: #e2edf1;
   font-family: "Inter", sans-serif;
 }
+
 h2 {
   font-family: "Lexend", sans-serif;
   font-weight: 600;
   font-size: 20px;
 }
+
+/* Class styles */
 .left-side {
   width: 200px;
 }
+
 .right-side {
   flex: 1;
 }
+
 .btn-login,
 .btn-org {
-  border: 2px solid #089bd9;
+  border: 2px solid #9a08d9;
   background-color: transparent;
 }
 
@@ -50,8 +64,6 @@ h2 {
   padding: 20px;
   border-radius: 10px;
   text-align: center;
-  /* width: 500px;
-  height: 400px; */
 }
 
 .verification-code-input {
@@ -68,6 +80,7 @@ h2 {
   border-radius: 4px;
   outline: none;
 }
+
 .animated-text {
   opacity: 0;
   animation: fadeInUp 2s ease-out forwards;
@@ -81,13 +94,11 @@ h2 {
 .banner-video-container {
   position: relative;
   width: 100%;
-  /* height: 100vh; */
   overflow: hidden;
 }
 
 .banner-video {
   width: 100%;
-  /* height: 600px; */
   object-fit: cover;
   opacity: 0.7;
   transition: opacity 0.5s ease-in-out;
@@ -96,6 +107,7 @@ h2 {
 .banner-video:hover {
   opacity: 1;
 }
+
 .carousel-container {
   position: relative;
   width: 100%;
@@ -117,20 +129,10 @@ h2 {
 }
 
 .text-overlay h2 {
-  /* font-size: 24px; */
   margin-bottom: 10px;
 }
 
-/* .text-overlay p {
-  font-size: 16px;
-} */
 .carousel-slide .text-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  text-align: center;
   z-index: 2;
 }
 
@@ -140,7 +142,6 @@ h2 {
   height: 100%;
   background-size: cover;
   background-position: center;
-  background-position: center top;
   position: relative;
   width: 100%;
 }
@@ -163,20 +164,21 @@ h2 {
   position: relative;
   z-index: 2;
 }
+
 .bg-banner {
   background-image: url("https://unitarmedia.blob.core.windows.net/data/avatar2.jpeg");
   background-size: cover;
   background-position: center;
 }
+
 .banner-container {
   position: relative;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 10px;
-  transition:
-    background-color 0.3s ease,
-    transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
 .banner-container:hover {
   background-color: rgba(0, 0, 0, 0.6);
   transform: translateY(-15px);
@@ -186,13 +188,13 @@ h2 {
   position: relative;
   z-index: 1;
 }
+
 .hackathon-cover-image img {
   width: 100%;
   height: 200px; /* Adjust height as needed */
   object-fit: cover; /* Ensures the image covers the entire container */
   border-radius: 10px; /* Adds rounded corners */
 }
-
 
 @keyframes pulse {
   0% {
@@ -203,9 +205,8 @@ h2 {
   }
   100% {
     transform: scale(1);
-  }
 }
-
+}
 .animate-text {
   animation: pulse 2s infinite;
 }

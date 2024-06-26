@@ -31,35 +31,39 @@ const Footer = () => {
       </div>
 
       <div className="flex justify-between mt-[100px] md:mt-[200px] ml-[20px] md:ml-[40px] border-b-3 border-black">
-        <img src={icplogo} className="md:w-[200px] w-[100px]" />
+      <div className="flex flex-col items-center">
+      <img src={icplogo} alt="logo" className="ml-5 md:w-32 w-20" />
+          <h1>100% on chain</h1> 
+        </div>
+    
         <div className="flex items-center space-x-4 mr-4 md:mr-20">
           <a
             href="https://www.facebook.com/UNITARHQ/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FacebookIcon className="text-gray-600 hover:text-yellow-500 cursor-pointer transition" />
+            <FacebookIcon className="text-purple-600 hover:text-blue-500 cursor-pointer transition" />
           </a>{" "}
           <a
             href="https://www.linkedin.com/school/unitarhq"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <LinkedIn className="text-gray-600 hover:text-yellow-500 cursor-pointer transition" />
+            <LinkedIn className="text-purple-600 hover:text-blue-500 cursor-pointer transition" />
           </a>
           <a
             href="https://twitter.com/UNITAR"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <TwitterIcon className="text-gray-600 hover:text-yellow-500 cursor-pointer transition" />
+            <TwitterIcon className="text-purple-600 hover:text-blue-500 cursor-pointer transition" />
           </a>
           <a
             href="https://www.youtube.com/user/UNITARHQ"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <YouTube className="text-gray-600 hover:text-yellow-500 cursor-pointer transition" />
+            <YouTube className="text-purple-600 hover:text-blue-500 cursor-pointer transition" />
           </a>
         </div>
       </div>

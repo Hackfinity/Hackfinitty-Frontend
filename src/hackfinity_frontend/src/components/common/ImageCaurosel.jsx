@@ -1,71 +1,79 @@
-import React, { useState, useEffect } from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-const ImageCarousel = ({ slides }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+function ImageCarousel({ slides, carouselHeight }) {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true, // Enable auto play
+    autoplaySpeed: 3000, // Time interval between transitions in milliseconds
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 3000,
+        },
+      },
+      {
+        className: "bg-transparent",
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 3000,
+        },
+      },
+    ],
   };
-
-  useEffect(() => {
-    const interval = setInterval(nextSlide, 5000);
-    return () => clearInterval(interval);
-  }, [currentIndex]);
-
+  
   return (
-    <div className="relative w-full overflow-hidden">
-      <div
-        className="flex transition-transform duration-500 ease-in-out"
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-      >
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className="flex-shrink-0 w-full flex items-center justify-center p-4"
-            style={{ minWidth: "100%", minHeight: "300px" }} // Adjusted minHeight for larger cards
-          >
-            <div className="w-full lg:w-4/5 flex items-center bg-white shadow-lg rounded-lg overflow-hidden">
-              <div className="w-1/2 flex justify-center items-center">
-                <img
-                  src={slide.image}
-                  alt={slide.title}
-                  className="object-cover w-full h-full max-w-xs max-h-80 rounded-l-lg" // Adjusted max size and added rounded corners
-                />
-              </div>
-              <div className="w-1/2 p-8">
-                <h2 className="font-bold text-blue-500 text-xl md:text-2xl tracking-wide">
-                  {slide.title}
-                </h2>
-                <p className="text-sm md:text-base text-gray-700 mt-4">
-                  {slide.description}
-                </p>
-              </div>
+    <Slider {...settings} style={{ minHeight: carouselHeight }}>
+      {slides.map((slide, index) => (
+        <div key={index} className="px-4 border-none"> {/* Removed border from here */}
+          <div className="shadow-lg rounded-lg overflow-hidden h-full flex items-center justify-center">
+            <div className="w-full lg:flex items-center justify-center">
+              <img
+                src={slide.image}
+                alt={slide.title}
+                className="object-contain max-h-80 rounded-lg bg-transparent"
+                style={{ maxHeight: '320px', width: 'auto' }}
+              />
+            </div>
+            <div className="p-4 lg:w-1/2 flex flex-col justify-center">
+              <h2 className="font-bold text-blue text-xl md:text-2xl tracking-wide mb-2 text-center">
+                {slide.title}
+              </h2>
+              <p className="text-sm md:text-base text-gray-700 text-center">
+                {slide.description}
+              </p>
             </div>
           </div>
-        ))}
-      </div>
-      <div className="absolute inset-y-0 left-0 flex items-center">
-        <button
-          className="bg-blue-500 text-white p-2 rounded-full shadow-lg hover:bg-blue-700 transition"
-          onClick={() =>
-            setCurrentIndex(
-              (prevIndex) => (prevIndex - 1 + slides.length) % slides.length
-            )
-          }
-        >
-          &lt;
-        </button>
-      </div>
-      <div className="absolute inset-y-0 right-0 flex items-center">
-        <button
-          className="bg-blue-500 text-white p-2 rounded-full shadow-lg hover:bg-blue-700 transition"
-          onClick={nextSlide}
-        >
-          &gt;
-        </button>
-      </div>
-    </div>
+        </div>
+      ))}
+    </Slider>
   );
+}
+
+// Define PropTypes for validation
+ImageCarousel.propTypes = {
+  slides: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  carouselHeight: PropTypes.string.isRequired,
 };
 
 export default ImageCarousel;

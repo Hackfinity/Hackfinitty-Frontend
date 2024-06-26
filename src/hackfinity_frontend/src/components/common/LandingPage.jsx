@@ -8,9 +8,8 @@ import BannerItem from "./BannerItem";
 import Footer from "./Footer";
 import avatar1 from '../../assets/maria.jpg';
 import avatar2 from '../../assets/Herbert_Portrait.jpg';
-import CubeAnimation from "./SpinningCube";
-import image1 from '../../assets/tech.jpg';
-import image2 from '../../assets/difinity.png';
+import box from '../../assets/box.jpg'
+import dev from '../../assets/dev.jpg'
 import image3 from '../../assets/DFINITY_logo_-_dark-removebg-preview.png';
 
 const LandingPage = () => {
@@ -21,14 +20,14 @@ const LandingPage = () => {
 
   const orgSlides = [
     {
-      image: image1,
+      image: box,
       title: "Tap into Talent",
       description: `Discover the next generation of innovators. Post your hackathon
       on ICP and connect with a global pool of talent. Watch as
       diverse teams bring fresh perspectives to your challenges.`,
     },
     {
-      image: image2,
+      image: dev,
       title: "Drive Innovation",
       description: `Challenge participants with real-world problems and witness
       groundbreaking solutions. Fuel innovation within your
@@ -45,36 +44,30 @@ const LandingPage = () => {
 
   const slides = [
     {
-      image: "https://unitarmedia.blob.core.windows.net/data/carouselImg3c.jpg",
+      image: box,
       title: "Unlock Your Potential",
-      description: `Dive into a world of endless possibilities. Browse through a
-      diverse range of hackathons hosted by top-notch organizations.
-      Whether you're a coding prodigy, a design virtuoso, or a
-      problem-solving guru, there's a hackathon just for you.`,
+      description: `Discover the power of technology to transform society. Join ICP hackathons and unleash your creativity in solving global challenges.`,
     },
     {
-      image: "https://unitarmedia.blob.core.windows.net/data/carouselImg2c.jpg",
+      image: dev,
       title: "Forge Connections",
-      description: `Connect with diverse minds from around the globe. Form teams that
-      blend expertise, creativity, and drive. Together, you'll redefine
-      what's possible.`,
+      description: `Connect with diverse minds worldwide in ICP hackathons. Collaborate across borders to create innovative solutions that make a difference.`,
     },
     {
-      image: "https://unitarmedia.blob.core.windows.net/data/carouselImg1c.jpg",
+      image: image3,
       title: "Fostering Diversity for Inclusive Solutions",
-      description: `Explore the dynamic landscape of diversity in the tech industry, where varied perspectives drive innovation. Join us on a journey of building solutions that transcend barriers, creating meaningful impact for people around the globe. Together, let's shape a future where technology serves as a catalyst for positive change, improving the lives of individuals and communities worldwide.`,
+      description: `Embrace diversity and inclusion in tech with ICP. Explore varied perspectives that drive innovation and create meaningful impact globally.`,
     },
     {
-      image: "https://unitarmedia.blob.core.windows.net/data/carouselImg4c.jpg",
+      image: dev,
       title: "Showcase Your Skills",
-      description: `Make your mark in the tech and innovation landscape. Showcase your
-      talents through innovative solutions, and grab the attention of
-      potential employers and collaborators.`,
+      description: `Demonstrate your expertise in technology and innovation. Participate in ICP hackathons to showcase your talents and gain recognition.`,
     },
   ];
+  
 
   return (
-    <div className="bg-yellowish-purple">
+    <div className="bg-yellowish-purple min-h-screen">
       <Navbar openModal={openModal} />
       <BasicModal openModal={openSignUpModal} handleClose={closeModal} />
       <div className="w-full h-screen text-center bg-pinkish">
@@ -118,32 +111,30 @@ const LandingPage = () => {
         </div>
       </div>
       <div className="mt-6">
-      <CubeAnimation /> 
+        <BannerVideo/>
       </div>
       <section className="mt-10">
-        <div className="max-w-xl mx-auto my-6 py-4 rounded-lg shadow-md border-2 border-custom-blue transition-transform transform hover:scale-105">
+        <div>
           <h2 className="text-center text-custom-blue text-1l md:text-4l font-bold">
             FOR PARTICIPANTS
           </h2>
         </div>
         <div className="mt-6">
-          <ImageCarousel slides={slides} />
+          <ImageCarousel slides={slides} carouselHeight="500px"  />
         </div>
       </section>
-      <div className="max-w-xl mx-auto my-6 py-4 rounded-lg shadow-md border border-custom-blue transition-transform transform hover:scale-105">
+      <div>
         <h2 className="text-center text-custom-blue text-1l md:text-4l font-bold">
           FOR ORGANIZERS
         </h2>
       </div>
       <section className="mt-10 text-center">
         <div className="mt-6">
-          <ImageCarousel slides={orgSlides} />
+          <ImageCarousel slides={orgSlides} carouselHeight="500px" />
         </div>
       </section>
       <section className="mt-10 mb-20">
-        <h2 className="text-center text-custom-blue text-3xl md:text-5xl font-bold tracking-wider">
-          ICP HACKATHON THEMES
-        </h2>
+       
         <div className="mt-10">
           <BannerItem />
         </div>
@@ -158,7 +149,5 @@ const LandingPage = () => {
     </div>
   );
 };
-
-
 
 export default LandingPage;
