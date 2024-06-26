@@ -51,12 +51,12 @@ const OrgHackathons = () => {
     <>
       {loading && <LinearProgress />}
       {!loading && (
-        <div className="flex flex-wrap space-x-4 mt-5 ml-4">
+        <div className="  flex flex-wrap space-x-4 mt-5 ml-4">
           {hackathonsPayload.length > 0 &&
             hackathonsPayload.map((field, index) => (
               <div
                 key={index}
-                className="border border-[#C7C7C7]  hover:border-custom-blue relative overflow-hidden  rounded-[20px] shadow-xl mb-4 w-[300px] h-[380px] transition-transform transform hover:-translate-y-1"
+                className="border border-custom-blue  hover:border-custom-blue relative overflow-hidden  rounded-[20px] shadow-xl mb-4 w-[300px] h-[380px] transition-transform transform hover:-translate-y-1"
               >
                 <HackathonMedia
                   cover_image_url={field.cover_image_url}
@@ -74,7 +74,7 @@ const OrgHackathons = () => {
                 <div className="flex gap-5 mt-[50px] ml-[22px]">
                   <button
                     onClick={() => handleViewClick(field)}
-                    className="border border-blue-500 rounded-md text-blue-500 w-[250px] text-xs mt-[80px] py-2 hover:bg-custom-blue mb-3 hover:text-white"
+                    className="border border-custom-blue rounded-md text-black w-[250px] text-xs mt-[80px] py-2 hover:bg-custom-blue mb-3 hover:text-white"
                   >
                     View Details
                   </button>

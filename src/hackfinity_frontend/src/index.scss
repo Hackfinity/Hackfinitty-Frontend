@@ -13,16 +13,16 @@
   --yellowish-purple: #D8A3A3; /* Light Purple */
   --custom-blue: #0E90D7; /* Blue */
   --text-custom-blue: #00BFFF; /* Bright Blue */
+  --custom-light-purple: #f5e1ff; /* Very light purple */
+  --text-custom-purple: #bfb3d8; /* Purple text color */
 }
-
 
 .bg-custom-purple {
-  background-color: #b4a5c6; /* Adjust the color code as per your design */
+  background-color: #b4a5c6; /* Adjusted purple color */
 }
 
-
 body {
- // background-color: #e2edf1;
+  /* background-color: #e2edf1; */
   font-family: "Inter", sans-serif;
 }
 
@@ -30,6 +30,7 @@ h2 {
   font-family: "Lexend", sans-serif;
   font-weight: 600;
   font-size: 20px;
+  color: var(--text-custom-purple); /* Purple text color */
 }
 
 /* Class styles */
@@ -43,7 +44,7 @@ h2 {
 
 .btn-login,
 .btn-org {
-  border: 2px solid #9a08d9;
+  border: 2px solid #ad99b6;
   background-color: transparent;
 }
 
@@ -84,7 +85,7 @@ h2 {
 .animated-text {
   opacity: 0;
   animation: fadeInUp 2s ease-out forwards;
-  color: #000;
+  color: var(--text-custom-purple); /* Purple text color */
   text-align: center;
   font-weight: bold;
   line-height: 1.5;
@@ -130,6 +131,7 @@ h2 {
 
 .text-overlay h2 {
   margin-bottom: 10px;
+  color: var(--text-custom-purple); /* Purple text color */
 }
 
 .carousel-slide .text-overlay {
@@ -166,7 +168,7 @@ h2 {
 }
 
 .bg-banner {
-  background-image: url("https://unitarmedia.blob.core.windows.net/data/avatar2.jpeg");
+  background-image: url("/src/assets/DFINITY_logo_-_dark-removebg-preview.png"); /* Replace with your image path */
   background-size: cover;
   background-position: center;
 }
@@ -205,8 +207,9 @@ h2 {
   }
   100% {
     transform: scale(1);
+  }
 }
-}
+
 .animate-text {
   animation: pulse 2s infinite;
 }

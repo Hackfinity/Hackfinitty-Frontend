@@ -8,24 +8,34 @@ import FolderOutlinedIcon from "@mui/icons-material/FolderOutlined";
 import { Grading } from "@mui/icons-material";
 
 const OrgSidebar = () => {
-  const [activePage, setActivePage] = useState("Dashboard");
+  const [activePage, setActivePage] = useState("dashboard"); // Default active page
   const navigate = useNavigate();
   const location = useLocation();
   const pathnameArray = location.pathname.split("/");
 
   useEffect(() => {
-    if (pathnameArray[2] === undefined || pathnameArray[2] === "dashboard") {
-      setActivePage("dashboard");
-    } else if (pathnameArray[2] === "hackathons") {
-      setActivePage("hackathons");
-    } else if (pathnameArray[2] === "submissions") {
-      setActivePage("submissions");
-    } else if (pathnameArray[2] === "grades") {
-      setActivePage("grades");
+    // Determine active page based on pathname
+    switch (pathnameArray[2]) {
+      case undefined:
+      case "dashboard":
+        setActivePage("dashboard");
+        break;
+      case "hackathons":
+        setActivePage("hackathons");
+        break;
+      case "submissions":
+        setActivePage("submissions");
+        break;
+      case "grades":
+        setActivePage("grades");
+        break;
+      default:
+        setActivePage("dashboard");
     }
   }, [pathnameArray]);
 
   const handleButtonClick = (page) => {
+    // Set active page and navigate to corresponding route
     setActivePage(page);
     navigate(`/organizer/${page}`);
   };
@@ -33,61 +43,54 @@ const OrgSidebar = () => {
   return (
     <div className="flex">
       <div className="bg-light-blue w-[250px] p-5 h-screen fixed left-0 top-0">
-      <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center mb-8">
           <img src={logo} alt="Logo" className="w-16 h-16 mb-4" />
-          <h1>100% on chain</h1> 
+          <h1 className="text-black text-xl">100% on chain</h1>
         </div>
-        <button
+
+        <SidebarButton
           onClick={() => handleButtonClick("dashboard")}
-          className={`py-2 pl-4 pr-5 border rounded-md mt-8 ${
-            activePage === "dashboard" && "border-custom-blue"
-          }`}
-        >
-          <div className="flex items-center gap-3">
-            <DashboardCustomizeOutlinedIcon className="w-5 h-5 text-custom-blue" />
-            <span className="text-sm">Dashboard</span>
-          </div>
-        </button>
+          active={activePage === "dashboard"}
+          icon={<DashboardCustomizeOutlinedIcon className="w-5 h-5 text-light-purple" />}
+          label="Dashboard"
+        />
 
-        <button
+        <SidebarButton
           onClick={() => handleButtonClick("hackathons")}
-          className={`py-2 pl-4 pr-5 border rounded-md mt-3 ${
-            activePage === "hackathons" && "border-custom-blue"
-          }`}
-        >
-          <div className="flex items-center gap-3">
-            <LayersOutlinedIcon className="w-5 h-5 text-custom-blue" />
-            <span className="text-sm">Hackathons</span>
-          </div>
-        </button>
+          active={activePage === "hackathons"}
+          icon={<LayersOutlinedIcon className="w-5 h-5 text-light-purple" />}
+          label="Hackathons"
+        />
 
-        <button
+        <SidebarButton
           onClick={() => handleButtonClick("submissions")}
-          className={`py-2 pl-4 pr-5 border rounded-md mt-3 ${
-            activePage === "submissions" && "border-custom-blue"
-          }`}
-        >
-          <div className="flex items-center gap-3">
-            <FolderOutlinedIcon className="w-5 h-5 text-custom-blue" />
-            <span className="text-sm">Submissions</span>
-          </div>
-        </button>
+          active={activePage === "submissions"}
+          icon={<FolderOutlinedIcon className="w-5 h-5 text-light-purple" />}
+          label="Submissions"
+        />
 
-        <button
+        <SidebarButton
           onClick={() => handleButtonClick("grades")}
-          className={`py-2 pl-4 pr-5 border rounded-md mt-3 ${
-            activePage === "grades" && "border-custom-blue"
-          }`}
-        >
-          <div className="flex items-center gap-3">
-            <Grading className="w-5 h-5 text-custom-blue" />
-            <span className="text-sm">Grades</span>
-          </div>
-        </button>
+          active={activePage === "grades"}
+          icon={<Grading className="w-5 h-5 text-light-purple" />}
+          label="Grades"
+        />
       </div>
       <Outlet />
     </div>
   );
 };
+
+const SidebarButton = ({ onClick, active, icon, label }) => (
+  <button
+    onClick={onClick}
+    className={`py-2 pl-4 pr-5 border rounded-md mt-3 ${active ? "border-custom-blue" : ""}`}
+  >
+    <div className="flex items-center gap-3">
+      {icon}
+      <span className="text-sm text-light-purple">{label}</span>
+    </div>
+  </button>
+);
 
 export default OrgSidebar;
