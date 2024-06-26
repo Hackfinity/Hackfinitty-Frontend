@@ -67,10 +67,10 @@ const LandingPage = () => {
   
 
   return (
-    <div className="bg-yellowish-purple min-h-screen">
+    <div className="bg[#F5E1FF] min-h-screen">
       <Navbar openModal={openModal} />
       <BasicModal openModal={openSignUpModal} handleClose={closeModal} />
-      <div className="w-full h-screen text-center bg-pinkish">
+      <div className="w-full h-screen text-center bg[#F5E1FF]">
         <div className="relative mx-auto p-2 flex justify-center">
           <div className="md:mt-[60px] mt-5">
             <h1 className="text-[24px] animate-text text-black md:text-4xl lg:text-6xl font-extrabold tracking-wider px-3 text-custom-blue">
@@ -115,7 +115,7 @@ const LandingPage = () => {
       </div>
       <section className="mt-10">
         <div>
-          <h2 className="text-center text-custom-blue text-1l md:text-4l font-bold">
+          <h2 className="text-center text-black text-1l md:text-4l font-bold">
             FOR PARTICIPANTS
           </h2>
         </div>
@@ -124,7 +124,7 @@ const LandingPage = () => {
         </div>
       </section>
       <div>
-        <h2 className="text-center text-custom-blue text-1l md:text-4l font-bold">
+        <h2 className="text-center text-black text-1l md:text-4l font-bold">
           FOR ORGANIZERS
         </h2>
       </div>

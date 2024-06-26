@@ -7,7 +7,7 @@ const BannerItem = () => {
     <div className="bg-banner py-10">
       <div className="container mx-auto">
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-5xl font-bold text-red tracking-wider">
+          <h2 className="text-3xl md:text-3xl font-bold text-custom-black tracking-wider">
             ICP Hackathon Themes
           </h2>
         </div>
@@ -19,6 +19,7 @@ const BannerItem = () => {
           />
           <FeatureBanner
             icon={<FaCube size={64} color="#9370DB" />}
+            bg-custom-color // Very light purple
             heading="Web3 and Decentralization"
             text="Explore the future of the internet with decentralized applications and platforms that empower users with more control and privacy."
           />
