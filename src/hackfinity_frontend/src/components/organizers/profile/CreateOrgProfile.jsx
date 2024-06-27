@@ -93,7 +93,7 @@ const CreateOrgProfile = () => {
             Organizer Profile
           </h1>
 
-          <p className="font-bold text-sm text-custom-blue bg-[#d8a8d8] px-4 flex items-center rounded w-[600px] h-[80px] mt-4">
+          <p className="font-bold text-sm text-black bg-[#d8a8d8] px-4 flex items-center rounded w-[600px] h-[80px] mt-4">
             Please complete your organizer profile below to utilize this
             platform.
           </p>

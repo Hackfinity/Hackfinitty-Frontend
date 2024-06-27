@@ -24,46 +24,72 @@ const LandingPage = () => {
       title: "Tap into Talent",
       description: `Discover the next generation of innovators. Post your hackathon
       on ICP and connect with a global pool of talent. Watch as
-      diverse teams bring fresh perspectives to your challenges.`,
+      diverse teams bring fresh perspectives to your challenges.
+      Leverage the creativity and problem-solving abilities of students,
+      professionals, and hobbyists from around the world, all eager to
+      showcase their skills and solutions.`,
     },
     {
       image: dev,
       title: "Drive Innovation",
       description: `Challenge participants with real-world problems and witness
       groundbreaking solutions. Fuel innovation within your
-      organization and be at the forefront of industry advancements.`,
+      organization and be at the forefront of industry advancements.
+      From prototype development to full-scale projects, harness the
+      collective genius of participants to push the boundaries of
+      what's possible in your field.`,
     },
     {
       image: image3,
       title: "Boost Your Brand",
       description: `Associate your organization with innovation. Be a catalyst for
       change and join a community that values pushing the boundaries of
-      what's possible.`,
+      what's possible. Enhance your brand's visibility and reputation by
+      sponsoring or hosting hackathons, and demonstrate your commitment
+      to fostering a culture of innovation and technological progress.`,
     },
   ];
+  
 
   const slides = [
     {
       image: box,
       title: "Unlock Your Potential",
-      description: `Discover the power of technology to transform society. Join ICP hackathons and unleash your creativity in solving global challenges.`,
+      description: `Discover the power of technology to transform society. Join ICP
+      hackathons and unleash your creativity in solving global challenges.
+      Take part in events that focus on sustainability, healthcare, education,
+      and more, where your ideas can make a real difference. Learn new skills,
+      collaborate with experts, and push the limits of your capabilities.`,
     },
     {
       image: dev,
       title: "Forge Connections",
-      description: `Connect with diverse minds worldwide in ICP hackathons. Collaborate across borders to create innovative solutions that make a difference.`,
+      description: `Connect with diverse minds worldwide in ICP hackathons.
+      Collaborate across borders to create innovative solutions that make a
+      difference. Build lasting relationships with fellow participants, mentors,
+      and industry leaders. Expand your professional network and open doors to
+      future opportunities in the tech community.`,
     },
     {
       image: image3,
       title: "Fostering Diversity for Inclusive Solutions",
-      description: `Embrace diversity and inclusion in tech with ICP. Explore varied perspectives that drive innovation and create meaningful impact globally.`,
+      description: `Embrace diversity and inclusion in tech with ICP. Explore varied
+      perspectives that drive innovation and create meaningful impact globally.
+      Participate in a welcoming environment where individuals from different
+      backgrounds come together to share ideas and build inclusive solutions.
+      Experience the power of collaboration in a diverse community.`,
     },
     {
       image: dev,
       title: "Showcase Your Skills",
-      description: `Demonstrate your expertise in technology and innovation. Participate in ICP hackathons to showcase your talents and gain recognition.`,
+      description: `Demonstrate your expertise in technology and innovation. Participate
+      in ICP hackathons to showcase your talents and gain recognition. Compete
+      with peers, receive feedback from industry professionals, and have the
+      chance to win prizes and awards. Use these platforms to highlight your
+      achievements and boost your career prospects.`,
     },
   ];
+  
 
   return (
     <div className="bg-light-blue min-h-screen">
@@ -72,7 +98,7 @@ const LandingPage = () => {
       <div className="w-full h-screen text-center bg-cutom-blue">
         <div className="relative mx-auto p-2 flex justify-center">
           <div className="md:mt-[110px] mt-5">
-            <h1 className="animate-text text-[24px] text-black md:text-4xl lg:text-6xl font-extrabold tracking-wider px-3 text-blue-900">
+            <h1 className="animate-text text-[24px] text-black md:text-4xl lg:text-6xl font-extrabold tracking-wider px-3 text-black-900">
               Unleashing Innovation,<br />One Hackathon at a Time!
             </h1>
             <p className="text-[12px] mt-4 md:text-[18px] md:w-[588px] md:mt-7 lg:ml-20 text-gray-700">

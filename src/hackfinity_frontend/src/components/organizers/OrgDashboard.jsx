@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 import { LinearProgress, CircularProgress } from "@mui/material";
-import { getOrganizerMetrics } from "../../api/accounts/accounts";
 import { selectLoggedInUserRef } from "../features/user/userSlice";
-import { fetchOrganizerProfile } from "../../api/accounts/accounts";
-import {
-  setCurrentOrganizerDetail,
-  setOrganizerCode,
-} from "../features/organizer/organizerSlice";
+import { setCurrentOrganizerDetail, setOrganizerCode } from "../features/organizer/organizerSlice";
 import { store } from "../../store/store";
 import ProfilePrompt from "./modals/ProfilePrompt";
 import OrgHackathons from "./OrgHackathons";
@@ -30,26 +26,30 @@ const OrgDashboard = () => {
   const org_ref = useSelector(selectLoggedInUserRef);
   const dispatch = useDispatch();
 
-  const fetchProfile = () => {
+  const fetchProfile = async () => {
     setFetching(true);
-    fetchOrganizerProfile(org_ref)
-      .then((res) => {
-        if (res.status === 200) {
-          setOrgProfile(res.data);
-          dispatch(
-            setCurrentOrganizerDetail({ currentOrganizerDetail: res.data })
-          );
-          dispatch(setOrganizerCode({ organizerCode: res.data.id }));
-          setOrgCode(res.data.id);
-          setFetching(false);
-          setProfileStatus("profile");
-        }
-      })
-      .catch((err) => {
-        setOpenProfilePrompt(true);
-        setFetching(false);
-        setProfileStatus("no_profile");
-      });
+    try {
+      const res = await axios.get(`/api/organizerProfile/${org_ref}`);
+      setOrgProfile(res.data);
+      dispatch(setCurrentOrganizerDetail({ currentOrganizerDetail: res.data }));
+      dispatch(setOrganizerCode({ organizerCode: res.data.id }));
+      setOrgCode(res.data.id);
+      setFetching(false);
+      setProfileStatus("profile");
+    } catch (error) {
+      setOpenProfilePrompt(true);
+      setFetching(false);
+      setProfileStatus("no_profile");
+    }
+  };
+
+  const fetchMetrics = async () => {
+    try {
+      const res = await axios.get(`/api/organizerMetrics/${org_ref}`);
+      setStats(res.data);
+    } catch (error) {
+      console.error("Error fetching metrics:", error);
+    }
   };
 
   const USER_LOGOUT = "USER_LOGOUT";
@@ -69,17 +69,12 @@ const OrgDashboard = () => {
   };
 
   useEffect(() => {
-    getOrganizerMetrics(org_ref).then((res) => {
-      setStats(res.data);
-    });
-  }, []);
-
-  useEffect(() => {
+    fetchMetrics();
     fetchProfile();
   }, []);
 
   return (
-    <div className=" bg-white p-8 right-side min-h-screen min-w-full">
+    <div className="bg-white p-8 right-side min-h-screen min-w-full">
       <div className="ml-60 p-6 bg-gradient-to-r bg-light-blue p-8 to-white min-h-screen">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-black-400 font-bold text-[24px]">Welcome Back!</h1>

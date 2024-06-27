@@ -119,8 +119,8 @@ const SignUp = () => {
   return (
     <div>
       <Navbar />
-      <div className="max-h-screen flex items-center justify-center mt-10 bg-light-blue">
-        <div className="bg-white p-8 rounded shadow-md w-100 border border-custom-blue overflow-y-auto ">
+      <div className="max-h-screen  flex items-center top-60 justify-center bg-light-blue relative bottom-[20px]">
+        <div className="bg-white p-8 rounded shadow-md w-100 border border-custom-blue">
           <h2 className="mb-6 font-semibold">
             Sign up for the ICP hackathons platform
           </h2>

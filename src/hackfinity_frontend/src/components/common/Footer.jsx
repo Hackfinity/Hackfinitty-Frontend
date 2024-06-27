@@ -28,9 +28,9 @@ const Footer = () => {
       </div>
 
       <div className="flex flex-col md:flex-row justify-between items-center mt-16 border-t border-gray-300 pt-10">
-        <div className="flex flex-col items-center mb-6 md:mb-0">
-          <img src={icplogo} alt="ICP Logo" className="w-24 md:w-32 mb-2" />
-          <h1 className="text-lg text-blue-800">100% on chain</h1>
+        <div className="flex flex-col items-center mb-2 md:mb-0">
+          <img src={icplogo} alt="ICP Logo" className="w-12 md:w-18 mb-2" />
+          <h1 className="text-sm text-black">100% on chain</h1>
         </div>
         <div className="flex space-x-6 mb-6 md:mb-0">
           <a
