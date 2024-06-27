@@ -98,7 +98,7 @@ const LogIn = () => {
   return (
     <div>
       <Navbar />
-      <div className="max-h-screen mt-10 flex items-center justify-center bg-light-blue relative bottom-[20px]">
+      <div className="max-h-screen  flex items-center top-60 justify-center bg-light-blue relative bottom-[20px]">
         <div className="bg-white p-8 rounded shadow-md w-100 border border-custom-blue">
           <h2 className="mb-6 font-semibold">
             Login to the ICP hackathon platform

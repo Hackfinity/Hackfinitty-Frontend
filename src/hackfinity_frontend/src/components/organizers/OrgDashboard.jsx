@@ -90,7 +90,7 @@ const OrgDashboard = () => {
           )}
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          <div className="border bg-custom-purple rounded-md text-white pt-5 mr-5 pr-[40px] ">
+          <div className="border bg-purple-400 rounded-md text-white pt-5 mr-5 pr-[40px] ">
             <span className="text-xs p-5">Affiliated Participants</span>
             <p className="p-5 font-bold">{stats.total_participants}</p>
           </div>

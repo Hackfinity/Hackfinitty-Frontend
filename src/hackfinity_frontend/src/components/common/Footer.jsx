@@ -3,7 +3,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { useNavigate } from "react-router-dom";
 import { LinkedIn, YouTube } from "@mui/icons-material";
-import icplogo from '../../assets/icp-logo.png'
+import icplogo from '../../assets/icp-logo.png';
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -14,70 +14,69 @@ const Footer = () => {
   }
 
   return (
-    <div className="bg-white text-[#12141D]">
-      <div className="text-center lg:text-3xl text-[16px] pt-11 font-semibold font-lexend-exa">
-        Ignite innovation today - <br /> sign up now for the ultimate <br />{" "}
-        hackathon experience
+    <div className="bg-light-blue text-[#12141D] text-black">
+      <div className="text-center  text-xl lg:text-2xl pt-8 font-semibold">
+        Ignite innovation today - <br /> sign up now for the ultimate <br /> hackathon experience
       </div>
       <div className="flex items-center justify-center mt-4">
         <button
-          onClick={() => {
-            scrollToTop();
-          }}
-          className="bg-[#089BD9] text-white p-[10px] md:p-[16px] text-center text-[10px] md:text-[18px] md:h-[55px] md:w-[192px] rounded-[5px] animate-text"
+          onClick={scrollToTop}
+          className="bg-custom-blue hover:bg-custom-blue text-white py-2 px-6 md:py-3 md:px-8 text-sm md:text-lg rounded-md shadow-lg transition-transform transform hover:-translate-y-1"
         >
           Get Started
         </button>
       </div>
 
-      <div className="flex justify-between mt-[100px] md:mt-[200px] ml-[20px] md:ml-[40px] border-b-3 border-black">
-      <div className="flex flex-col items-center">
-      <img src={icplogo} alt="logo" className="ml-5 md:w-32 w-20" />
-          <h1>100% on chain</h1> 
+      <div className="flex flex-col md:flex-row justify-between items-center mt-16 border-t border-gray-300 pt-10">
+        <div className="flex flex-col items-center mb-6 md:mb-0">
+          <img src={icplogo} alt="ICP Logo" className="w-24 md:w-32 mb-2" />
+          <h1 className="text-lg text-blue-800">100% on chain</h1>
         </div>
-    
-        <div className="flex items-center space-x-4 mr-4 md:mr-20">
+        <div className="flex space-x-6 mb-6 md:mb-0">
           <a
             href="https://www.facebook.com/UNITARHQ/"
             target="_blank"
             rel="noopener noreferrer"
+            className="transition-transform transform hover:scale-110"
           >
-            <FacebookIcon className="text-purple-600 hover:text-blue-500 cursor-pointer transition" />
-          </a>{" "}
+            <FacebookIcon className="text-black hover:text-custom-blue" />
+          </a>
           <a
             href="https://www.linkedin.com/school/unitarhq"
             target="_blank"
             rel="noopener noreferrer"
+            className="transition-transform transform hover:scale-110"
           >
-            <LinkedIn className="text-purple-600 hover:text-blue-500 cursor-pointer transition" />
+            <LinkedIn className="text-black hover:text-blue-600" />
           </a>
           <a
             href="https://twitter.com/UNITAR"
             target="_blank"
             rel="noopener noreferrer"
+            className="transition-transform transform hover:scale-110"
           >
-            <TwitterIcon className="text-purple-600 hover:text-blue-500 cursor-pointer transition" />
+            <TwitterIcon className="text-black hover:text-blue-600" />
           </a>
           <a
             href="https://www.youtube.com/user/UNITARHQ"
             target="_blank"
             rel="noopener noreferrer"
+            className="transition-transform transform hover:scale-110"
           >
-            <YouTube className="text-purple-600 hover:text-blue-500 cursor-pointer transition" />
+            <YouTube className="text-black hover:text-custom-blue" />
           </a>
         </div>
       </div>
 
-      <div className="flex justify-between mt-5 mb-2 bg-[#2e4161] p-4">
-        <p className="md:ml-11 ml-2 text-[8px] md:text-[12px] text-white">
-          {" "}
-          © Copyright {currentYear}, All Rights Reserved
-        </p>
-
-        <p className="md:mr-11  mr-2 md:text-[12px] text-[8px] mb-1 text-white">
-          {" "}
-          Privacy Policy Terms & Conditions
-        </p>
+      <div className="bg-light-blue py-4 mt-6">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
+          <p className="text-xs md:text-sm mb-2 md:mb-0">
+            © {currentYear}, All Rights Reserved
+          </p>
+          <p className="text-xs md:text-sm">
+            Privacy Policy | Terms & Conditions
+          </p>
+        </div>
       </div>
     </div>
   );

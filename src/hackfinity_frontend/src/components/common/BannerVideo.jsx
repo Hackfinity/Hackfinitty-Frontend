@@ -1,18 +1,18 @@
 import React from "react";
-import video from '../../assets/4389377-hd_2048_1080_30fps.mp4'
 
 const BannerVideo = () => {
   return (
-    <div className="banner-video-container ">
-      <video
-        className="banner-video md:h-[600px] h-[300px]"
-        autoPlay
-        loop
-        muted
-      >
-        <source src={video} />
-        Your browser does not support the video tag.
-      </video>
+    <div className="banner-video-container flex justify-center py-8">
+      <div className="relative overflow-hidden w-full max-w-4xl h-0 pb-[56.25%]"> {/* 16:9 aspect ratio, max width */}
+        <iframe
+          className="absolute top-0 left-0 w-full h-full"
+          src="https://www.youtube.com/embed/2jKSpqvECds"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      </div>
     </div>
   );
 };

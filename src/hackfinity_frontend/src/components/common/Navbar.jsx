@@ -9,38 +9,35 @@ const Navbar = ({ openModal }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="flex flex-col md:flex md:flex-row py-4 md:py-6 md:justify-between md:items-center navbar">
-      
-      <div className="flex flex-col items-center">
-      <img src={logo} alt="logo" className="ml-5 md:w-32 w-20" />
-          <h1>100% on chain</h1> 
-        </div>
+    <nav className="flex items-center justify-between bg-light-blue shadow fixed w-full z-10 py-0 px-5">
+      <div className="flex items-center">
+        <img src={logo} alt="ICP Hub Logo" className="w-20 md:w-24" />
+        <h1 className="text-base md:text-lg font-semibold text-custom-blue ml-3 hidden md:block">
+          100% on Chain
+        </h1>
+      </div>
       <div
         onClick={() => setOpen(!open)}
-        className="text-3xl absolute right-8 top-2 cursor-pointer md:hidden text-black"
+        className="text-3xl cursor-pointer md:hidden text-custom-blue"
       >
         {open ? <CloseIcon /> : <MenuIcon />}
       </div>
       <div
-        className={`absolute md:static flex flex-col md:flex-row w-full md:mt-0 mt-2 md:h-[0] h-[200px] md:flex  md:justify-end md:items-center md:flex-1 md:gap-4 border-t-[2px] border-custom-blue md:border-hidden z-[1] md:z-auto transition-all duration-500 ease-in
-         ${
-           open
-             ? "top-16 opacity-100"
-             : "-top-[490px] opacity-0 md:opacity-100"
-         }
-        `}
+        className={`absolute md:static top-50 md:top-50 left-0 w-full md:w-auto bg-light-blue md:bg-transparent flex flex-col md:flex-row items-center md:items-center transition-all duration-500 ease-in-out ${
+          open ? "opacity-100" : "opacity-0 md:opacity-100"
+        }`}
       >
         <button
           onClick={() => navigate("/login")}
-          className="mt-5 mr-4 px-4 py-2 text-custom-blue text-lg font-semibold bg-white border-2 border-custom-blue rounded-lg shadow-md transition duration-300 hover:bg-custom-blue hover:text-white hover:border-transparent"
+          className="mt-2 md:mt-0 md:ml-4 px-4 py-2 text-custom-blue text-sm md:text-base font-semibold bg-white border-2 border-blue-900 rounded-lg shadow-md transition duration-300 hover:bg-blue-900 hover:text-white"
         >
           Login
         </button>
         <button
-          onClick={() => openModal()}
-          className="mt-5 inline-flex rounded-[8px] flex-col items-center justify-center mr-4 p-2 h-10 text-white transition-transform transform bg-gradient-to-r from-blue-400 to-purple-500 hover:from-purple-500 hover:to-pink-500 border-none hover:shadow-xl"
+          onClick={openModal}
+          className="mt-2 md:mt-0 md:ml-4 px-4 py-2 text-white text-sm md:text-base rounded-lg bg-gradient-to-r from-blue-400 to-purple-500 hover:from-purple-500 hover:to-pink-500 transition duration-300 transform hover:scale-105 shadow-lg"
         >
-          Sign up
+          Sign Up
         </button>
       </div>
     </nav>

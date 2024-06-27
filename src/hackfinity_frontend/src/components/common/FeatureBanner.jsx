@@ -1,20 +1,26 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const FeatureBanner = ({ icon, backgroundColor, heading, text }) => {
+const FeatureBanner = ({ icon, heading, text }) => {
   return (
-    <div className="banner-container lg:w-1/4 w-full" style={{ backgroundColor }}>
-      <div className="flex bg-[#e0e0e0] rounded w-[60px] h-[60px] px-2 py-2">
+    <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center w-full md:w-1/4 transition-transform transform hover:scale-105">
+      <div className="mb-4">
         {icon}
       </div>
-
-      <h4 className="text-custom-black text-[12px] md:text-lg text-left font-inter font-bold mt-4">
+      <h3 className="text-xl font-bold text-blue-900 mb-2">
         {heading}
-      </h4>
-      <p className="text-white flex flex-wrap text-[10px] md:text-[14px] text-left mt-2">
+      </h3>
+      <p className="text-gray-700">
         {text}
       </p>
     </div>
   );
+};
+
+FeatureBanner.propTypes = {
+  icon: PropTypes.element.isRequired,
+  heading: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 export default FeatureBanner;
