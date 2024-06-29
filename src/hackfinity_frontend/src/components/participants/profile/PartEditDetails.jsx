@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Avatar, CircularProgress } from "@mui/material";
 import { axiosApi } from "../../../api";
 import { useSelector } from "react-redux";
-import { selectCurrentParticipantDetail } from "../../../features/participant/participantSlice";
+import { selectCurrentParticipantDetail } from "../../features/participants/participantSlice";
 import UserProfile from "./UserProfile";
-import UpdateProfileModal from "./UpdateProfileModal";
+import UpdateProfileModal from "../profile/SuccessModal";
 import { useNavigate } from "react-router-dom";
 import { themes, getSubthemes } from "../../common/utils/ThemeUtils";
 

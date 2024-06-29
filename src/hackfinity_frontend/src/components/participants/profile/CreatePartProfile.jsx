@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Avatar, CircularProgress } from "@mui/material";
 import { axiosApi } from "../../../api";
-import { selectLoggedInUserRef } from "../../../features/user/userSlice";
+import { selectLoggedInUserRef } from "../../features/user/userSlice";
 import SuccessModal from "./SuccessModal";
 import { useNavigate } from "react-router-dom";
 import { themes, getSubthemes } from "../../common/utils/ThemeUtils";
