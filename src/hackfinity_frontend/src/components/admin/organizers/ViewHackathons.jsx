@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import HackathonMedia from "../../common/utils/HackathonMedia";
+import HackathonMedia from "../../utils/HackathonMedia";
 import { getOrganizerHackathons } from "../../../api/hackathons/hackathons";
-import { selectCurrentOrganizerDetail } from "../../../features/organizer/organizerSlice";
+import { selectCurrentOrganizerDetail } from "../../features/organizer/organizersSlice";
 import { CircularProgress } from "@mui/material";
-import { setCurrentHackathonDetail } from "../../../features/hackathon/hackathonSlice";
+import { setCurrentHackathonDetail } from "../../features/hackathon/hackathonSlice";
 const ViewHackathons = () => {
   const [loading, setLoading] = useState(true);
   const organizer = useSelector(selectCurrentOrganizerDetail);

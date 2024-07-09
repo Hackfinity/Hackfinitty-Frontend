@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Avatar, CircularProgress } from "@mui/material";
-import { axiosApi } from "../../../api";
 import { selectLoggedInUserRef } from "../../features/user/userSlice";
 import { useNavigate } from "react-router-dom";
 import SuccessModal from "../../participants/profile/SuccessModal";
+import { Actor, HttpAgent } from "@dfinity/agent";
+import { idlFactory as organizerProfileIdlFactory } from "../../../declarations/organizer_profile";
+
+const canisterId = "bkyz2-fmaaa-aaaaa-qaaaq-cai"; // Replace with your canister ID
 
 const CreateOrgProfile = () => {
   const org_ref = useSelector(selectLoggedInUserRef);
@@ -43,37 +46,40 @@ const CreateOrgProfile = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const transmitPayload = new FormData();
-    transmitPayload.append("name", organizerDetails.name);
-    transmitPayload.append("location", organizerDetails.location);
-    transmitPayload.append("industry", organizerDetails.industry);
-    transmitPayload.append("user_id", org_ref);
-    transmitPayload.append("profile_image", file);
-    axiosApi
-      .post("/organizers", transmitPayload, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((res) => {
-        if (res.status === 201) {
-          setSuccessMessage(true);
-          openModal();
-          setTimeout(() => {
-            closeModal();
-            navigate("/organizer");
-          }, 1000);
-          setIsSubmitting(false);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
+
+    const agent = new HttpAgent();
+    const organizerProfileActor = Actor.createActor(organizerProfileIdlFactory, {
+      agent,
+      canisterId,
+    });
+
+    const profileImageBlob = await file.arrayBuffer();
+    const organizerProfileDetails = {
+      ...organizerDetails,
+      user_id: org_ref,
+      profile_image: new Uint8Array(profileImageBlob),
+    };
+
+    try {
+      const success = await organizerProfileActor.createOrganizerProfile(organizerProfileDetails);
+      if (success) {
+        setSuccessMessage(true);
+        openModal();
+        setTimeout(() => {
+          closeModal();
+          navigate("/organizer");
+        }, 1000);
         setIsSubmitting(false);
-      });
+      }
+    } catch (error) {
+      console.error(error);
+      setIsSubmitting(false);
+    }
   };
+
   const handleHover = () => {
     if (isSubmitting) {
       return "cursor-not-allowed";
@@ -81,6 +87,7 @@ const CreateOrgProfile = () => {
       return "cursor-pointer hover:bg-blue-500";
     }
   };
+
   return (
     <>
       {successMessage && (

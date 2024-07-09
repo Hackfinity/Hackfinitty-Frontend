@@ -92,16 +92,17 @@ const LandingPage = () => {
   
 
   return (
-    <div className="bg-light-blue min-h-screen">
+    <div className="bg-gradient-to-r from-custom-blue to-custom-purple   min-h-screen">
       <Navbar openModal={openModal} />
       <BasicModal openModal={openSignUpModal} handleClose={closeModal} />
       <div className="w-full h-screen text-center bg-cutom-blue">
         <div className="relative mx-auto p-2 flex justify-center">
           <div className="md:mt-[110px] mt-5">
-            <h1 className="animate-text text-[24px] text-black md:text-4xl lg:text-6xl font-extrabold tracking-wider px-3 text-black-900">
-              Unleashing Innovation,<br />One Hackathon at a Time!
-            </h1>
-            <p className="text-[12px] mt-4 md:text-[18px] md:w-[588px] md:mt-7 lg:ml-20 text-gray-700">
+          <h1 className="animate-text text-[24px] text-custom-white md:text-4xl lg:text-6xl font-extrabold tracking-wider px-3 text-black-900">
+    Unleashing Innovation,<br />One Hackathon at a Time!
+</h1>
+
+            <p className="text-[12px] mt-4 md:text-[18px] md:w-[588px] md:mt-7 lg:ml-20 text-[#4d79ff]">
               Join a global community of thinkers, dreamers, and doers. Whether you're here to conquer challenges or host groundbreaking hackathons, this is where innovation takes center stage.
             </p>
           </div>
@@ -115,7 +116,7 @@ const LandingPage = () => {
           </button>
           <button
             onClick={() => navigate("/org-signup")}
-            className="px-3 py-2 text-[13px] md:text-[18px] md:py-4 md:px-[20px] rounded border-2 md:w-[239px] border-blue-900 transition-transform transform hover:-translate-y-1"
+            className="px-3 py-2 text-[13px] md:text-[18px] md:py-4 md:px-[20px] rounded border-2 md:w-[239px] border-custom-purple transition-transform transform hover:-translate-y-1 text-[#4d79ff]"
           >
             For Organisers
           </button>
@@ -123,14 +124,14 @@ const LandingPage = () => {
         <div className="hidden lg:block absolute rounded-full bottom-[180px] right-[140px] animate-text">
           <img
             src={avatar1}
-            className="rounded-full border-2 border-pink-700 w-[80px] h-[80px] object-cover"
+            className="rounded-full border-2 border-custom-blue w-[80px] h-[80px] object-cover"
             alt="Avatar"
           />
         </div>
         <div className="hidden lg:block absolute rounded-full bottom-[80px] left-[150px] animate-text">
           <img
             src={avatar2}
-            className="rounded-full border-2 border-red-700 w-[80px] h-[80px] object-cover"
+            className="rounded-full border-2 border-custom-purple w-[80px] h-[80px] object-cover"
             alt="Avatar"
           />
         </div>
@@ -140,7 +141,7 @@ const LandingPage = () => {
       </div>
       <section className="mt-10">
         <div>
-          <h2 className="text-center text-black text-2xl md:text-4xl font-bold">
+          <h2 className="text-center text-custom-white text-xl md:text-2xl font-bold">
             FOR PARTICIPANTS
           </h2>
         </div>
@@ -149,7 +150,7 @@ const LandingPage = () => {
         </div>
       </section>
       <div>
-        <h2 className="text-center text-black text-2xl md:text-4xl font-bold">
+        <h2 className="text-center text-custom-white text-xl md:text-2xl font-bold">
           FOR ORGANIZERS
         </h2>
       </div>

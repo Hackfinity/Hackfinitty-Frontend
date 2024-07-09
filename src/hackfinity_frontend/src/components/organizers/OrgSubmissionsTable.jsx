@@ -7,7 +7,7 @@ import MenuButton from "@mui/joy/MenuButton";
 import MenuItem from "@mui/joy/MenuItem";
 import MoreVert from "@mui/icons-material/MoreVert";
 import { getHackathonSubmissions } from "../../api/hackathons/hackathons";
-import CustomDataGrid from "../common/utils/CustomDataGrid";
+import CustomDataGrid from "../utils/CustomDataGrid";
 import { useNavigate } from "react-router-dom";
 import moment from 'moment';
 import SendFeedbackDialog from "./SendFeedbackDialog";

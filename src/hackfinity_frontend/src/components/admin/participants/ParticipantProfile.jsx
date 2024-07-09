@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectCurrentParticipantDetail } from "../../../features/participant/participantSlice";
+import { selectCurrentParticipantDetail } from "../../features/participants/participantSlice";
 import EmailIcon from "@mui/icons-material/Email";
 import HomeIcon from "@mui/icons-material/Home";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";

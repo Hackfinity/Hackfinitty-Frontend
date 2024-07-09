@@ -6,7 +6,7 @@ import MenuButton from "@mui/joy/MenuButton";
 import MenuItem from "@mui/joy/MenuItem";
 import MoreVert from "@mui/icons-material/MoreVert";
 import { useNavigate } from "react-router-dom";
-import CustomDataGrid from "../../common/utils/CustomDataGrid";
+import CustomDataGrid from "../../utils/CustomDataGrid";
 import AdminProfile from "../AdminLogOut";
 import { LinearProgress, Typography } from "@mui/material";
 import { getAllTeams } from "../../../api/teams/teams";

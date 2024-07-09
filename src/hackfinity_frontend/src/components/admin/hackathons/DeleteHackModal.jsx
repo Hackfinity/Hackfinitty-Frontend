@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
-import { selectSelectedHackathonDetail } from "../../../features/hackathon/hackathonSlice";
+import { selectSelectedHackathonDetail } from "../../features/hackathon/hackathonSlice";
 import { deleteHackathon } from "../../../api/hackathons/hackathons";
 import DeleteSuccessModal from "./DeleteSuccessModal";
 import DeleteIcon from "@mui/icons-material/Delete";

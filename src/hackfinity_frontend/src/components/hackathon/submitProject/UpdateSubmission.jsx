@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import UserProfile from "../../participants/profile/UserProfile";
 import { ChevronRight } from "@mui/icons-material";
 import { CircularProgress, TextField } from "@mui/material";
-import { selectCurrentSubmissionDetail } from "../../../features/submission/submissionSlice";
+import { selectCurrentSubmissionDetail } from "../../features/submission/submissionSlice";
 import { useSelector } from "react-redux";
 import { updateTeamHackathonResponse } from "../../../api/teams/teams";
 import { useNavigate } from "react-router-dom";

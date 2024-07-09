@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SubscribeModal from "../SubscribeModal";
 import UserProfile from "../../participants/profile/UserProfile";
-import { selectSelectedHackathonDetail } from "../../../features/hackathon/hackathonSlice";
+import { selectSelectedHackathonDetail } from "../../features/hackathon/hackathonSlice";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";

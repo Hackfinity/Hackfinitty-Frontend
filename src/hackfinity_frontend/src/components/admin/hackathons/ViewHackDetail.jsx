@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import moment from "moment";
-import { selectSelectedHackathonDetail } from "../../../features/hackathon/hackathonSlice";
+import { selectSelectedHackathonDetail } from "../../features/hackathon/hackathonSlice";
 import AdminProfile from "../AdminLogOut";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import BookIcon from "@mui/icons-material/Book";

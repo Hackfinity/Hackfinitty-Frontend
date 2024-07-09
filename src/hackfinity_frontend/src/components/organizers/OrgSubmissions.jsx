@@ -2,7 +2,7 @@ import React from "react";
 import OrgSubmissionsTable from "./OrgSubmissionsTable";
 import OrgProfile from "./profile/OrgProfile";
 import { useSelector } from "react-redux";
-import { selectSelectedHackathonDetail } from "../../features/hackathon/hackathonSlice";
+import { selectSelectedHackathonDetail } from "../features/hackathon/hackathonSlice";
 import { ChevronRight } from "@mui/icons-material";
 
 const OrgSubmissions = () => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectCurrentHackathonDetail } from "../../../features/hackathon/hackathonSlice";
+import { selectCurrentHackathonDetail } from "../../features/hackathon/hackathonSlice";
 import { useNavigate } from "react-router-dom";
 import { validateHackathon } from "../../../api/hackathons/hackathons";
 import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";

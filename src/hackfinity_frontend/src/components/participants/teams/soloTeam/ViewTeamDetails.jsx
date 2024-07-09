@@ -7,7 +7,7 @@ import LayersOutlinedIcon from "@mui/icons-material/LayersOutlined";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getTeamDetails, getTeamSubmission } from "../../../../api/teams/teams";
 import { LinearProgress, CircularProgress } from "@mui/joy";
-import { setCurrentSubmissionDetail } from "../../../../features/submission/submissionSlice";
+import { setCurrentSubmissionDetail } from "../../../features/submission/submissionSlice";
 import { Chip } from "@mui/material";
 
 const ViewTeamDetails = () => {

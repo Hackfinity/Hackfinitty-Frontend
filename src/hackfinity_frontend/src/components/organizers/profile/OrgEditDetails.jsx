@@ -3,7 +3,7 @@ import { Avatar, CircularProgress } from "@mui/material";
 import OrgProfile from "./OrgProfile";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { selectCurrentOrganizerDetail } from "../../../features/organizer/organizerSlice";
+import { selectCurrentOrganizerDetail } from "../../features/organizer/organizersSlice";
 import { axiosApi } from "../../../api";
 import UpdateProfileModal from "../../participants/profile/UpdateProfileModal";
 

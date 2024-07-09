@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DeleteModal from "./DeleteModal";
 import AdminProfile from "../AdminLogOut";
 import { useSelector } from "react-redux";
-import { selectCurrentSubmissionDetail } from "../../../features/submission/submissionSlice";
+import { selectCurrentSubmissionDetail } from "../../features/submission/submissionSlice";
 import { deleteHackathonSubscription } from "../../../api/hackathons/hackathons";
 import DeleteSubmissionModal from "./DeleteSubmissionModal";
 import { useNavigate } from "react-router-dom";

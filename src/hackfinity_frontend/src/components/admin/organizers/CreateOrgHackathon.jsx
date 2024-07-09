@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { TextField, Button, Stack, Grid, Typography, Box } from "@mui/material";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import DatePicker from "../../common/utils/DatePicker";
+import DatePicker from "../../utils/DatePicker";
 import moment from "moment";
-import { selectCurrentOrganizerDetail } from "../../../features/organizer/organizerSlice";
+import { selectCurrentOrganizerDetail } from "../../features/organizer/organizerSlice";
 import { useNavigate } from "react-router-dom";
-import { setCurrentHackathonDetail } from "../../../features/hackathon/hackathonSlice";
+import { setCurrentHackathonDetail } from "../../features/hackathon/hackathonSlice";
 import { createHackathon } from "../../../api/hackathons/hackathons";
 const CreateOrgHackathon = () => {
   const [tags, setTags] = useState([]);

@@ -4,7 +4,7 @@ import UserProfile from "../profile/UserProfile";
 import {
   selectInviteRef,
   setCurrentInviteDetail,
-} from "../../../features/invite/inviteSlice";
+} from "../../features/invite/inviteSlice";
 import {
   getTeamInviteDetails,
   invitationActions,

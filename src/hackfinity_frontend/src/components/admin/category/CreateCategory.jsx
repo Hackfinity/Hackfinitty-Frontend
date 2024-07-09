@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectLoggedInUserRef } from "../../../features/user/userSlice";
+import { selectLoggedInUserRef } from "../../features/user/userSlice";
 import { createTag } from "../../../api/hackathons/hackathons";
 import SuccessModal from "./SuccessModal";
 import { useNavigate } from "react-router-dom";

@@ -14,7 +14,7 @@ const Footer = () => {
   }
 
   return (
-    <div className="bg-light-blue text-[#12141D] text-black">
+    <div className="bg[#b0a3d9] text-[#12141D] text-black">
       <div className="text-center  text-xl lg:text-2xl pt-8 font-semibold">
         Ignite innovation today - <br /> sign up now for the ultimate <br /> hackathon experience
       </div>
@@ -68,7 +68,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="bg-light-blue py-4 mt-6">
+      <div className="bg[#ebd4e7] py-4 mt-6">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
           <p className="text-xs md:text-sm mb-2 md:mb-0">
             © {currentYear}, All Rights Reserved

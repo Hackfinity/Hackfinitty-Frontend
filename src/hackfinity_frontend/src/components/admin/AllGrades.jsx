@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AdminLogOut from "./AdminLogOut";
 import { getAllGrades } from "../../api/grades/grades";
-import CustomDataGrid from "../common/utils/CustomDataGrid";
+import CustomDataGrid from "../utils/CustomDataGrid";
 import { LinearProgress, Typography } from "@mui/material";
 
 const AllGrades = () => {

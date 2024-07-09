@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { getAllUsers } from "../../../api/admins/admins";
 import { Chip, Typography } from "@mui/material";
 import { red, green } from "@mui/material/colors";
-import CustomDataGrid from "../../common/utils/CustomDataGrid";
+import CustomDataGrid from "../../utils/CustomDataGrid";
 import AdminLogOut from "../AdminLogOut";
 import { LinearProgress } from "@mui/material";
 import ActivateModal from "./ActivateModal";

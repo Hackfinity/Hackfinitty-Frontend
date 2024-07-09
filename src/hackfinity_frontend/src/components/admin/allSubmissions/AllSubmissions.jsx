@@ -7,7 +7,7 @@ import MenuItem from "@mui/joy/MenuItem";
 import MoreVert from "@mui/icons-material/MoreVert";
 import { useNavigate } from "react-router-dom";
 import { getSubmissions } from "../../../api/teams/teams";
-import CustomDataGrid from "../../common/utils/CustomDataGrid";
+import CustomDataGrid from "../../utils/CustomDataGrid";
 import AdminProfile from "../AdminLogOut";
 import { LinearProgress, Typography } from "@mui/material";
 const AllSubmissions = () => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { searchLearnersByNameTable } from "../../../api/teams/teams";
-import CustomDataGrid from "../../common/utils/CustomDataGrid";
+import CustomDataGrid from "../../utils/CustomDataGrid";
 import { Typography, LinearProgress } from "@mui/material";
 const SearchParticipant = ({
   columns,

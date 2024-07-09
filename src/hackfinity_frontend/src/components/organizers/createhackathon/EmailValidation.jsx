@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { requestValidationCode } from "../../../api/hackathons/hackathons";
-import { selectCurrentHackathonDetail } from "../../../features/hackathon/hackathonSlice";
-import { selectLoggedInUserRef } from "../../../features/user/userSlice";
+import { selectCurrentHackathonDetail } from "../../features/hackathon/hackathonSlice";
+import { selectLoggedInUserRef } from "../../features/user/userSlice";
 import { ChevronRight } from "@mui/icons-material";
 import { CircularProgress } from "@mui/material";
 const EmailValidation = () => {

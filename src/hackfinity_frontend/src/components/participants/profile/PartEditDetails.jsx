@@ -6,7 +6,7 @@ import { selectCurrentParticipantDetail } from "../../features/participants/part
 import UserProfile from "./UserProfile";
 import UpdateProfileModal from "../profile/SuccessModal";
 import { useNavigate } from "react-router-dom";
-import { themes, getSubthemes } from "../../common/utils/ThemeUtils";
+import { themes, getSubthemes } from "../../utils/ThemeUtils";
 
 const PartEditDetails = () => {
   const participantProfile = useSelector(selectCurrentParticipantDetail);

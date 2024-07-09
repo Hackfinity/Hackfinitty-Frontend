@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectSelectedHackathonDetail } from "../../../features/hackathon/hackathonSlice";
-import { selectCurrentParticipantDetail } from "../../../features/participant/participantSlice";
+import { selectSelectedHackathonDetail } from "../../features/hackathon/hackathonSlice";
+import { selectCurrentParticipantDetail } from "../../features/participant/participantSlice";
 import UserProfile from "../profile/UserProfile";
 import { ChevronRight, ConstructionOutlined } from "@mui/icons-material";
 import SuccessModal from "./SuccessModal";

@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { CircularProgress, Typography } from "@mui/material";
 import { axiosApi } from "../../api";
 import { adminValidateHackathon } from "../../api/hackathons/hackathons";
-import { selectCurrentHackathonDetail } from "../../features/hackathon/hackathonSlice";
-import { selectCurrentUserRole } from "../../features/user/userSlice";
+import { selectCurrentHackathonDetail } from "../features/hackathon/hackathonSlice";
+import { selectCurrentUserRole } from "../features/user/userSlice";
 import AddMediaModal from "./AddMediaModal";
 import { ChevronRight } from "@mui/icons-material";
 const HackathonMedia = () => {

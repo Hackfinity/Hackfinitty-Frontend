@@ -5,7 +5,7 @@ import { axiosApi } from "../../../api";
 import { selectLoggedInUserRef } from "../../features/user/userSlice";
 import SuccessModal from "./SuccessModal";
 import { useNavigate } from "react-router-dom";
-import { themes, getSubthemes } from "../../common/utils/ThemeUtils";
+import { themes, getSubthemes } from "../../utils/ThemeUtils";
 const CreatePartProfile = () => {
   const [openSuccessModal, setOpenSuccessModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);

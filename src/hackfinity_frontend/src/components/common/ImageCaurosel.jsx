@@ -45,10 +45,10 @@ function ImageCarousel({ slides, carouselHeight }) {
               />
             </div>
             <div className="p-4 lg:w-1/2 flex flex-col justify-center text-center">
-              <h2 className="font-bold text-blue-900 text-xl md:text-2xl tracking-wide mb-2">
+              <h2 className="font-bold text-custom-blue text-xl md:text-2xl tracking-wide mb-2">
                 {slide.title}
               </h2>
-              <p className="text-sm md:text-base text-gray-700">
+              <p className="text-sm md:text-base text-custom-white">
                 {slide.description}
               </p>
             </div>

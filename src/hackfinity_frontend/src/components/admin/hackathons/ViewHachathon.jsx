@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import HackathonMedia from "../../common/utils/HackathonMedia";
+import HackathonMedia from "../../utils/HackathonMedia";
 import AdminProfile from "../AdminLogOut";
-import { selectSelectedHackathonDetail } from "../../../features/hackathon/hackathonSlice";
+import { selectSelectedHackathonDetail } from "../../features/hackathon/hackathonSlice";
 const ViewHackathon = () => {
   const navigate = useNavigate();
   const hackathonDetails = useSelector(selectSelectedHackathonDetail);

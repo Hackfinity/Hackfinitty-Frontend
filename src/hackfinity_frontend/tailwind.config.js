@@ -4,13 +4,13 @@ export default {
   theme: {
     extend: {
       backgroundColor: {
-        "custom-blue": "#009edb",
-        "light-blue": "#E2EDF1",
-        "custom-bg": "var(--Blue, #2B59FF)",
+        "custom-blue": "#a688ff",
+        "light-blue": "#a688ff",
+        "custom-bg": "var(--Blue, #a688ff)",
       },
       colors: {
-        'custom-blue': '#009ebd',
-        'custom-purple': '#6D28D9',
+        'custom-blue': '#6635b7',
+        'custom-purple': '#100325',
         'custom-gray': '#F3F4F6',
         'custom-white': '#FFFFFF',
       },

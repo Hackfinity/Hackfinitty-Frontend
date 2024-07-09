@@ -5,7 +5,7 @@ import {
 } from "../../api/grades/grades";
 import { useLocation } from "react-router-dom";
 import AdminLogOut from "./AdminLogOut";
-import CustomDataGrid from "../common/utils/CustomDataGrid";
+import CustomDataGrid from "../utils/CustomDataGrid";
 import { LinearProgress, Typography } from "@mui/material";
 import { Grading } from "@mui/icons-material";
 

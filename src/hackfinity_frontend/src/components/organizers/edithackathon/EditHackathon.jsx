@@ -11,9 +11,9 @@ import {
   CircularProgress,
 } from "@mui/material";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import { themes } from "../../common/utils/ThemeUtils";
-import DatePicker from "../../common/utils/DatePicker";
-import { selectSelectedHackathonDetail } from "../../../features/hackathon/hackathonSlice";
+import { themes } from "../../utils/ThemeUtils";
+import DatePicker from "../../utils/DatePicker";
+import { selectSelectedHackathonDetail } from "../../features/hackathon/hackathonSlice";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
