@@ -20,11 +20,11 @@ const Sidebar = () => {
   }, [pathnameArray]);
 
   return (
-    <div className="flex bg-light-blue">
-      <div className="bg-light-blue p-4 h-screen fixed left-0 top-0 w-[250px] text-black">
+    <div className="flex bg-light-blue ">
+      <div className="bg-gradient-to-r from-custom-blue to-custom-purple p-4 h-screen fixed left-0 top-0 w-[250px] text-black">
         <div className="flex flex-col items-center">
           <img src={logo} alt="Logo" className="w-16 h-16 mb-4" />
-          <h1>100% on chain</h1> {/* Assuming user profile is available */}
+          <h1 className="text-white text-bold">Internet Computer</h1> {/* Assuming user profile is available */}
         </div>
         <button
           onClick={() => navigate("/participant/dashboard")}
@@ -32,10 +32,10 @@ const Sidebar = () => {
             borderColor: activePage === "dashboard" ? "#00A1DC" : "inherit",
             transition: "border-color 0.3s",
           }}
-          className="py-2 pl-6 pr-5 border rounded-md mt-16 text-black hover:bg-icp-light-blue"
+          className="py-2 pl-6 pr-5 border rounded-md mt-16 text-white hover:bg-icp-custom-blue"
         >
           <div className="flex gap-5">
-            <DashboardCustomizeOutlinedIcon className="w-7 h-7 text-black" />
+            <DashboardCustomizeOutlinedIcon className="w-7 h-7 text-white" />
             <span className="text-[14px]">Dashboard</span>
           </div>
         </button>
@@ -46,10 +46,10 @@ const Sidebar = () => {
             borderColor: activePage === "hackathons" ? "#00A1DC" : "inherit",
             transition: "border-color 0.3s",
           }}
-          className="py-2 pl-6 pr-5 border rounded-md mt-5 text-black hover:bg-icp-light-blue"
+          className="py-2 pl-6 pr-5 border rounded-md mt-5 text-white hover:bg-icp-custom-blue"
         >
           <div className="flex gap-5">
-            <LayersOutlinedIcon className="w-7 h-7 text-black" />
+            <LayersOutlinedIcon className="w-7 h-7 text-white" />
             <span className="text-[14px]">Hackathons</span>
           </div>
         </button>
@@ -60,10 +60,10 @@ const Sidebar = () => {
             borderColor: activePage === "teams-submissions" ? "#00A1DC" : "inherit",
             transition: "border-color 0.3s",
           }}
-          className="py-2 pl-6 pr-5 border rounded-md mt-5 text-black hover:bg-icp-light-blue"
+          className="py-2 pl-6 pr-5 border rounded-md mt-5 text-white hover:bg-icp-custom-blue"
         >
           <div className="flex gap-4 items-center">
-            <FolderOutlinedIcon className="w-7 h-7 text-black" />
+            <FolderOutlinedIcon className="w-7 h-7 text-white" />
             <span className="text-[14px]">
               Teams & <br />
               Submissions

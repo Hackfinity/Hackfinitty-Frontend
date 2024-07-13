@@ -41,38 +41,38 @@ const OrgSidebar = () => {
   };
 
   return (
-    <div className="flex">
-      <div className="bg-light-blue w-[250px] p-5 h-screen fixed left-0 top-0">
+    <div className="flex bg-light-blue">
+      <div className="bg-gradient-to-r from-custom-blue to-custom-purple w-[250px] p-5 h-screen fixed left-0 top-0">
         <div className="flex flex-col items-center mb-8">
           <img src={logo} alt="Logo" className="w-16 h-16 mb-4" />
-          <h1 className="text-black text-xl">100% on chain</h1>
+          <h1 className="text-white text-xl">100% on chain</h1>
         </div>
 
         <SidebarButton
           onClick={() => handleButtonClick("dashboard")}
           active={activePage === "dashboard"}
-          icon={<DashboardCustomizeOutlinedIcon className="w-5 h-5 text-light-purple" />}
+          icon={<DashboardCustomizeOutlinedIcon className="w-5 h-5 text-white" />}
           label="Dashboard"
         />
 
         <SidebarButton
           onClick={() => handleButtonClick("hackathons")}
           active={activePage === "hackathons"}
-          icon={<LayersOutlinedIcon className="w-5 h-5 text-light-purple" />}
+          icon={<LayersOutlinedIcon className="w-5 h-5 text-white" />}
           label="Hackathons"
         />
 
         <SidebarButton
           onClick={() => handleButtonClick("submissions")}
           active={activePage === "submissions"}
-          icon={<FolderOutlinedIcon className="w-5 h-5 text-light-purple" />}
+          icon={<FolderOutlinedIcon className="w-5 h-5 text-white" />}
           label="Submissions"
         />
 
         <SidebarButton
           onClick={() => handleButtonClick("grades")}
           active={activePage === "grades"}
-          icon={<Grading className="w-5 h-5 text-light-purple" />}
+          icon={<Grading className="w-5 h-5 text-white" />}
           label="Grades"
         />
       </div>
@@ -84,11 +84,11 @@ const OrgSidebar = () => {
 const SidebarButton = ({ onClick, active, icon, label }) => (
   <button
     onClick={onClick}
-    className={`py-2 pl-4 pr-5 border rounded-md mt-3 ${active ? "border-custom-blue" : ""}`}
+    className={`py-2 pl-4 pr-5 border rounded-md mt-3 ${active ? "border-white" : ""}`}
   >
     <div className="flex items-center gap-3">
       {icon}
-      <span className="text-sm text-light-purple">{label}</span>
+      <span className="text-sm text-white">{label}</span>
     </div>
   </button>
 );

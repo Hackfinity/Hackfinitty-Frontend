@@ -24,9 +24,9 @@ h2 {
 
 .btn-login,
 .btn-org {
-  border: 2px solid hsl(279, 90%, 30%);
+  border: 2px solid #634a65;
   background-color: transparent;
-  color: #a108d9;
+  color: #634a65;
   padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;
@@ -36,7 +36,7 @@ h2 {
 
 .btn-login:hover,
 .btn-org:hover {
-  background-color: #089bd9;
+  background-color: #634a65;
   color: #fff;
 }
 

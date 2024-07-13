@@ -119,8 +119,8 @@ const SignUp = () => {
   return (
     <div>
       <Navbar />
-      <div className="max-h-screen  flex items-center top-60 justify-center bg-light-blue relative bottom-[20px]">
-        <div className="bg-white p-8 rounded shadow-md w-100 border border-custom-blue">
+      <div className="max-h-screen  flex items-center top-60 justify-center bg-custoom-blue relative bottom-[20px]">
+        <div className="bg-white p-8 rounded shadow-md w-100 border border-custom-purple">
           <h2 className="mb-6 font-semibold">
             Sign up for the ICP hackathons platform
           </h2>
@@ -140,7 +140,7 @@ const SignUp = () => {
           <button
             onClick={handleICSignUp}
             disabled={isSubmitting}
-            className={`w-full text-[13px] md:text-[16px] bg-custom-blue text-white py-2 mt-4 rounded ${handleHover()}`}
+            className={`w-full text-[13px] md:text-[16px] bg-custom-purple text-white py-2 mt-4 rounded ${handleHover()}`}
           >
             {isSubmitting ? (
               <>

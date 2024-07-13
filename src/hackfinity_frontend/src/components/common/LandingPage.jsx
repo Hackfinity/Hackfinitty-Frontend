@@ -166,7 +166,7 @@ const LandingPage = () => {
       </section>
       <Footer />
       <button
-        className="fixed bottom-5 right-5 bg-blue-900 text-white p-2 rounded shadow hover:bg-blue-700 transition"
+        className="fixed bottom-5 right-5 bg-custom-purple text-white p-2 rounded shadow hover:bg-custom-blue transition"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
         Back to Top

@@ -16,7 +16,7 @@ const CustomDataGrid = ({ rows, columns }) => {
       <Box
         sx={{
           "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: "primary.lightest_gray",
+            backgroundColor: "#3c2e66",
             fontSize: 16,
           },
         }}

@@ -7,14 +7,14 @@ const UserProfile = ({ status }) => {
   const closeProfileMenu = () => setAnchorElNav(null);
 
   return (
-    <div className="flex gap-10 items-center bg-light-blue">
+    <div className="flex gap-10 items-center bg-custom-blue">
       <div className="relative inline-block">
         <div
-          className="flex items-center border transition-transform transform hover:-translate-y-1 shadow-md p-2 border-gray-300 rounded-lg space-x-2 cursor-pointer bg-white"
+          className="flex items-center border transition-transform transform hover:-translate-y-1 shadow-md p-2 border-custom-purple rounded-lg space-x-2 cursor-pointer bg-white"
           onClick={openProfileMenu}
         >
           {status === "no_profile" ? (
-            <span className="text-gray-600">No Profile</span>
+            <span className="text-custom-purple">No Profile</span>
           ) : (
             <>
               <Avatar
@@ -22,7 +22,7 @@ const UserProfile = ({ status }) => {
                 src="" // Placeholder for the profile image URL
                 sx={{ width: 36, height: 36 }}
               />
-              <p className="text-xs text-gray-700 mr-3">John Zimmerman</p> {/* Placeholder for the full name */}
+              <p className="text-xs text-custom-purple mr-3">John Zimmerman</p> {/* Placeholder for the full name */}
             </>
           )}
         </div>
@@ -43,10 +43,10 @@ const UserProfile = ({ status }) => {
           onClose={closeProfileMenu}
           sx={{ pt: 4, mt: 1 }}
         >
-          <MenuItem onClick={closeProfileMenu} className="hover:bg-gray-100">
+          <MenuItem onClick={closeProfileMenu} className="hover:bg-custom-purple">
             Profile
           </MenuItem>
-          <MenuItem onClick={closeProfileMenu} className="hover:bg-gray-100">
+          <MenuItem onClick={closeProfileMenu} className="hover:bg-custom-purple">
             Logout
           </MenuItem>
         </Menu>

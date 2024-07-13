@@ -8,10 +8,10 @@ import WarningIcon from "@mui/icons-material/Warning";
 const HackathonDashboard = () => {
   return (
     <>
-      <div className="overflow-y-auto ml-60 bg-white p-8 right-side min-h-screen">
+      <div className="overflow-y-auto ml-60 bg-gradient-to-r from-custom-blue to-custom-purple p-8 right-side min-h-screen">
         <Grid container justifyContent="space-between" alignItems="center">
           <Grid item>
-            <Typography variant="h4" color="textPrimary" fontWeight="bold">
+            <Typography variant="h4" color="#fff" fontWeight="bold">
               Hackathons
             </Typography>
           </Grid>
@@ -20,7 +20,7 @@ const HackathonDashboard = () => {
           </Grid>
         </Grid>
         <Box mt={4}>
-          <Typography variant="h5" color="textPrimary" fontWeight="bold" mb={2}>
+          <Typography variant="h5" color="#fff" fontWeight="bold" mb={2} text-size="12">
             Open Hackathons
           </Typography>
           {/* <Typography variant="subtitle1" color="textSecondary" fontWeight="bold">

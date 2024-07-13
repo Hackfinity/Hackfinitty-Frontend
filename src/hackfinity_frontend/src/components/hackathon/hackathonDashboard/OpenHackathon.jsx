@@ -29,28 +29,29 @@ const OpenHackathon = () => {
     <>
       {loading && <LinearProgress />}
       {!loading && (
-        <div className="flex flex-wrap space-x-4 mt-5 ml-4">
+        <div className="flex flex-wrap space-x-4 mt-5 ml-4 bg-gradient-to-r from-custom-blue to-custom-purple">
+        
           {hackathonsPayload.length > 0 &&
             hackathonsPayload.map((field, index) => (
               <div
                 key={index}
-                className="hover:border-custom-blue relative overflow-hidden border border-[#C7C7C7] rounded-[20px] shadow mb-4 w-[250px] h-[300px] transition-transform transform hover:-translate-y-1"
+                className="hover:border-custom-purple relative overflow-hidden border border-[#24143d] rounded-[20px] shadow mb-4 w-[250px] h-[300px] transition-transform transform hover:-translate-y-1"
               >
                 <HackathonMedia
                   cover_image_url={field.cover_image_url}
                   avatar_url={field.avatar_url}
                 />
                 <div className="relative">
-                  <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-white p-4 rounded-[20px] border-[#7C7C7C] border-t">
-                    <p className="text-sm font-bold mt-4 text-custom-blue">{field.title}</p>
-                    <p className="text-sm text-gray-700 text-custom-blue">{field.highlight}</p>
-                    <p className="text-xs text-gray-500 mt-2 h-[30px] overflow-hidden text-custom-blue">
+                  <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-white p-4 rounded-[10px] border-[#24143d] border-t">
+                    <p className="text-sm font-bold mt-4 text-[#24143d]">{field.title}</p>
+                    <p className="text-sm text-white text-white">{field.highlight}</p>
+                    <p className="text-xs text-white mt-2 h-[30px] overflow-hidden ">
                       {field.description}
                     </p>
                   </div>
                 </div>
                 <div className="flex gap-5 mt-[100px] mb-[20px] ml-[20px] items-center">
-                  <button className="border border-blue-500 rounded-md py-2 hover:bg-custom-blue hover:text-white text-blue-500 w-[200px] text-xs">
+                  <button className="border border-custom-purple bg-white rounded-md py-2 hover:bg-custom-blue hover:text-white text-black w-[200px] text-xs">
                     View project
                   </button>
                 </div>
@@ -62,7 +63,7 @@ const OpenHackathon = () => {
                 Your profile does not seem to draw any recommendations. Please
                 update it below to get hackathons.
               </h1>
-              <button className="border-custom-blue text-sm w-[180px] px-2 py-2 rounded border-[2px] font-bold text-custom-blue">
+              <button className="border-custom-purple text-sm w-[180px] px-2 py-2 rounded border-[2px] font-bold text-custom-blue">
                 Update Profile
               </button>
             </>

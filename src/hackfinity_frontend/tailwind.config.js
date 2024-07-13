@@ -9,7 +9,7 @@ export default {
         "custom-bg": "var(--Blue, #a688ff)",
       },
       colors: {
-        'custom-blue': '#6635b7',
+        'custom-blue': '#553b75',
         'custom-purple': '#100325',
         'custom-gray': '#F3F4F6',
         'custom-white': '#FFFFFF',

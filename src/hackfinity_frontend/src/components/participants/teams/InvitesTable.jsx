@@ -75,8 +75,8 @@ const InvitesTable = ({ invitesMiniData, loading }) => {
   ];
 
   return (
-    <div className="w-[90%] mt-8 mb-5 ">
-      <p className=" font-bold text-[18px] mt-4 text-gray-500">
+    <div className="w-[90%] mt-8 mb-5  bg-[#3c2e66]">
+      <p className=" font-bold text-[18px] mt-4 text-white">
         My Team Invites
       </p>
       {loading ? (
@@ -88,9 +88,9 @@ const InvitesTable = ({ invitesMiniData, loading }) => {
           columns={columns}
         />
       ) : (
-        <div className="mt-4 bg-white w-3/4 p-4 rounded shadow flex gap-5 items-center">
+        <div className="mt-4 bg-[#3c2e66] w-3/4 p-4 rounded shadow flex gap-5 items-center">
           <InfoOutlined sx={{ color: "red" }} />
-          <p className="text-bold text-black">
+          <p className="text-bold text-white">
             You do not have any team invites at the moment. Keep exploring!
           </p>
         </div>

@@ -7,8 +7,8 @@ import { LinearProgress } from "@mui/material";
 const OrgHackathonPage = () => {
   const navigate = useNavigate();
   return (
-    <div className="bg-white p-8 right-side min-h-screen">
-      <div className="ml-60">
+    <div className="bg-blue-900 p-8 right-side min-h-screen ml-60">
+     
         <div className="flex flex-col">
           <div className="flex justify-between">
             <h1 className="text-black-600 font-bold  text-[24px]">Hackathons</h1>
@@ -25,7 +25,7 @@ const OrgHackathonPage = () => {
           </span>
         </div>
         <OrgHackathons />
-      </div>
+      
     </div>
   );
 };

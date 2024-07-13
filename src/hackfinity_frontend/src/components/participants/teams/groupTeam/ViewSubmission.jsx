@@ -66,17 +66,17 @@ const ViewSubmission = () => {
   }, []);
 
   return (
-    <div className="bg-[#FAF9F6] right-side min-h-screen">
+    <div className="bg-gradient-to-r from-custom-blue to-custom-purple right-side min-h-screen">
       <div className="ml-[280px] mt-6">
         <div className="flex justify-between">
-          <h1 className="mt-0 text-gray-600 font-bold text-[20px] relative">
+          <h1 className="mt-0 text-white font-bold text-[20px] relative">
             View Submission
           </h1>
           <div className="mr-10">
             <UserProfile />
           </div>
         </div>
-        <p className="text-xs text-gray-500 flex flex-row mb-5">
+        <p className="text-xs text-white flex flex-row mb-5">
           <span className="mt-[2px]">Teams & Submissions</span>
           <ChevronRight sx={{ width: "20px", height: "20px" }} />
           <span className="mt-[2px]">View Team Details</span>

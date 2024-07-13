@@ -15,10 +15,10 @@ const SpinLoading = () => {
     >
       <CircularProgress
         style={{ marginBottom: 2 }}
-        color="primary"
+        color="#3c2e66"
         size={60}
       />
-      <Typography variant="h6" color="primary">
+      <Typography variant="h6" color="#3c2e66">
         Loading...
       </Typography>
     </div>

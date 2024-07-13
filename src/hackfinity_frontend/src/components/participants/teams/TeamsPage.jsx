@@ -97,12 +97,12 @@ const TeamsPage = () => {
     <div className="bg-white p-8  min-h-screen right-side">
       <div className="ml-60">
         <div className="flex justify-between">
-          <h1 className="mt-0 text-gray-600 font-bold  text-[20px] relative ">
+          <h1 className="mt-0 text-white font-bold  text-[20px] relative ">
             Hackathons
           </h1>
           <UserProfile />
         </div>{" "}
-        <p className="text-xs text-gray-500  flex flex-row mb-5">
+        <p className="text-xs text-white  flex flex-row mb-5">
           <span className="mt-[2px]">Hackathon</span>
           <ChevronRight sx={{ width: "20px", height: "20px" }} />
           <span className="mt-[2px]">{hackathonData.title}</span>
@@ -148,7 +148,7 @@ const TeamsPage = () => {
                   type="text"
                   value={teamName}
                   onChange={handleTeamNameChange}
-                  className="mt-1 p-2 border border-gray-300 rounded-md w-[350px]"
+                  className="mt-1 p-2 border border-white rounded-md w-[350px]"
                 />
                 <button
                   type="submit"

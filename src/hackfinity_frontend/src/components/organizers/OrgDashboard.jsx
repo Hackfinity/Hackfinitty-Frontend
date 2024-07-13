@@ -74,10 +74,10 @@ const OrgDashboard = () => {
   }, []);
 
   return (
-    <div className="bg-white p-8 right-side min-h-screen min-w-full">
-      <div className="ml-60 p-6 bg-gradient-to-r bg-light-blue p-8 to-white min-h-screen">
+    <div className="bg-[#24143d] p-8 right-side min-h-screen min-w-full">
+      <div className="ml-60 p-6 bg-gradient-to-r from-custom-blue to-custom-purple min-h-screen">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-black-400 font-bold text-[24px]">Welcome Back!</h1>
+          <h1 className="text-white font-bold text-[24px]">Welcome Back!</h1>
           {orgCode === "" && fetching ? (
             <CircularProgress />
           ) : (

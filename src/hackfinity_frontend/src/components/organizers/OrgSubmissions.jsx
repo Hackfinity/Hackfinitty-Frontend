@@ -11,7 +11,7 @@ const OrgSubmissions = () => {
     <div className="bg-white p-8 right-side min-h-screen min-w-full">
       <div className="ml-60">
         <div className="flex justify-between">
-          <h1 className="text-gray-600 font-bold text-[24px] mb-5 ">
+          <h1 className="text-black font-bold text-[24px] mb-5 ">
           {hackathon.title} Hackathon Submissions
           </h1>
           <OrgProfile />
