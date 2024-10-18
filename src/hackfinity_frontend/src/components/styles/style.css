@@ -203,3 +203,24 @@ h2 {
 .animate-text {
   animation: pulse 2s infinite;
 }
+
+/* Example styles for animated lines */
+@keyframes lineAnimation {
+  0% {
+    width: 0;
+    opacity: 0.5;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+.section-title::before {
+  content: "";
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, #FFA500, #FF6347);
+  animation: lineAnimation 1s ease-in-out;
+}
+

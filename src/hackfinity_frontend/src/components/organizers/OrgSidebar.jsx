@@ -45,7 +45,7 @@ const OrgSidebar = () => {
       <div className="bg-gradient-to-r from-custom-blue to-custom-purple w-[250px] p-5 h-screen fixed left-0 top-0">
         <div className="flex flex-col items-center mb-8">
           <img src={logo} alt="Logo" className="w-16 h-16 mb-4" />
-          <h1 className="text-white text-xl">100% on chain</h1>
+          <h1 className="text-white text-xl">Internet Computer</h1>
         </div>
 
         <SidebarButton

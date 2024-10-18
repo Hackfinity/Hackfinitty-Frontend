@@ -1,3 +1,5 @@
+// LandingPage.js
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
@@ -6,17 +8,29 @@ import BannerVideo from "./BannerVideo";
 import ImageCarousel from "./ImageCaurosel";
 import BannerItem from "./BannerItem";
 import Footer from "./Footer";
+import Hackathons from "../common/hacks"; // Import Hackathons component
 import avatar1 from '../../assets/maria.jpg';
 import avatar2 from '../../assets/Herbert_Portrait.jpg';
 import box from '../../assets/box.jpg';
 import dev from '../../assets/dev.jpg';
 import image3 from '../../assets/DFINITY_logo_-_dark-removebg-preview.png';
+import { pastHackathons, incomingHackathons, ongoingHackathons } from '../common/hackathonData'; // Import hackathon data
 
 const LandingPage = () => {
   const [openSignUpModal, setOpenSignUpModal] = useState(false);
+  const [showChoiceModal, setShowChoiceModal] = useState(false);
+  const navigate = useNavigate();
+
   const openModal = () => setOpenSignUpModal(true);
   const closeModal = () => setOpenSignUpModal(false);
-  const navigate = useNavigate();
+  
+  const openChoiceModal = () => setShowChoiceModal(true);
+  const closeChoiceModal = () => setShowChoiceModal(false);
+
+  const handleChoice = (type) => {
+    closeChoiceModal();
+    navigate(`/${type}-signup`);
+  };
 
   const orgSlides = [
     {
@@ -49,7 +63,6 @@ const LandingPage = () => {
       to fostering a culture of innovation and technological progress.`,
     },
   ];
-  
 
   const slides = [
     {
@@ -89,84 +102,94 @@ const LandingPage = () => {
       achievements and boost your career prospects.`,
     },
   ];
-  
 
   return (
-    <div className="bg-gradient-to-r from-custom-blue to-custom-purple   min-h-screen">
+    <div className="min-h-screen text-gray-800 bg-[#f5f5f5] relative">
       <Navbar openModal={openModal} />
       <BasicModal openModal={openSignUpModal} handleClose={closeModal} />
-      <div className="w-full h-screen text-center bg-cutom-blue">
-        <div className="relative mx-auto p-2 flex justify-center">
-          <div className="md:mt-[110px] mt-5">
-          <h1 className="animate-text text-[24px] text-custom-white md:text-4xl lg:text-6xl font-extrabold tracking-wider px-3 text-black-900">
-    Unleashing Innovation,<br />One Hackathon at a Time!
-</h1>
 
-            <p className="text-[12px] mt-4 md:text-[18px] md:w-[588px] md:mt-7 lg:ml-20 text-[#4d79ff]">
+      {/* Hero Section */}
+      <div className="pt-16 w-full h-screen flex flex-col items-center justify-center text-center bg-[#f5f5f5]">
+        <div className="relative mx-auto flex flex-col md:flex-row items-center justify-center px-4 md:px-8 lg:px-16">
+          <div className="md:w-1/2 mb-8 md:mb-0 flex flex-col items-center md:items-start text-center md:text-left">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-black leading-tight">
+              Unleashing Innovation,<br />One Hackathon at a Time!
+            </h1>
+            <p className="text-sm md:text-base lg:text-lg mt-4 md:mt-6 text-gray-700 max-w-xl">
               Join a global community of thinkers, dreamers, and doers. Whether you're here to conquer challenges or host groundbreaking hackathons, this is where innovation takes center stage.
             </p>
+            <button
+              onClick={openChoiceModal}
+              className="px-6 py-3 bg-[#96C9F4] rounded-lg text-[16px] md:text-[18px] text-black font-semibold transition-transform transform hover:bg-[#75a5d3] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#96C9F4] focus:ring-opacity-50"
+            >
+              Get Started
+            </button>
+          </div>
+          <div className="md:w-1/2 flex items-center justify-center">
+            <img
+              src={dev}
+              alt="Innovation"
+              className="rounded-lg shadow-lg object-cover max-w-full h-auto"
+            />
           </div>
         </div>
-        <div className="flex gap-10 items-center justify-center mt-5 md:mt-[100px]">
-          <button
-            onClick={() => navigate("/part-signup")}
-            className="px-3 py-2 bg-custom-blue rounded text-[13px] md:text-[18px] text-white md:py-4 md:px-[20px] md:w-[239px] transition-transform transform hover:-translate-y-1"
-          >
-            For Participants
-          </button>
-          <button
-            onClick={() => navigate("/org-signup")}
-            className="px-3 py-2 text-[13px] md:text-[18px] md:py-4 md:px-[20px] rounded border-2 md:w-[239px] border-custom-purple transition-transform transform hover:-translate-y-1 text-[#4d79ff]"
-          >
-            For Organisers
-          </button>
-        </div>
-        <div className="hidden lg:block absolute rounded-full bottom-[180px] right-[140px] animate-text">
-          <img
-            src={avatar1}
-            className="rounded-full border-2 border-custom-blue w-[80px] h-[80px] object-cover"
-            alt="Avatar"
-          />
-        </div>
-        <div className="hidden lg:block absolute rounded-full bottom-[80px] left-[150px] animate-text">
-          <img
-            src={avatar2}
-            className="rounded-full border-2 border-custom-purple w-[80px] h-[80px] object-cover"
-            alt="Avatar"
-          />
-        </div>
       </div>
-      <div className="mt-6">
-        <BannerVideo />
-      </div>
-      <section className="mt-10">
-        <div>
-          <h2 className="text-center text-custom-white text-xl md:text-2xl font-bold">
-            FOR PARTICIPANTS
-          </h2>
+
+      {/* Choice Modal */}
+      {showChoiceModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-80 md:w-96 text-center">
+            <h2 className="text-lg font-bold mb-4">Are you an Organizer or a Participant?</h2>
+            <div className="flex flex-col gap-4">
+              <button
+                onClick={() => handleChoice("part")}
+                className="px-4 py-2 bg-[#96C9F4] rounded-lg text-black font-semibold transition-transform transform hover:bg-[#75a5d3] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#96C9F4] focus:ring-opacity-50"
+              >
+                Participant
+              </button>
+              <button
+                onClick={() => handleChoice("org")}
+                className="px-4 py-2 border-2 border-[#96C9F4] rounded-lg text-[#96C9F4] font-semibold transition-transform transform hover:bg-[#96C9F4] hover:text-black hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#96C9F4] focus:ring-opacity-50"
+              >
+                Organizer
+              </button>
+              <button
+                onClick={closeChoiceModal}
+                className="px-4 py-2 mt-4 text-gray-600 hover:text-gray-800 focus:outline-none"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
         </div>
-        <div className="mt-6">
-          <ImageCarousel slides={slides} carouselHeight="500px" />
-        </div>
-      </section>
-      <div>
-        <h2 className="text-center text-custom-white text-xl md:text-2xl font-bold">
-          FOR ORGANIZERS
-        </h2>
-      </div>
-      <section className="mt-10 text-center">
-        <div className="mt-6">
-          <ImageCarousel slides={orgSlides} carouselHeight="500px" />
-        </div>
-      </section>
-      <section className="mt-10 mb-20">
+      )}
+
+      {/* Banner Items */}
+      <section className="mt-16 mb-20">
         <div className="mt-10">
           <BannerItem />
         </div>
       </section>
+
+      {/* Banner Video */}
+      <div className="mt-6">
+        <BannerVideo />
+      </div>
+
+      {/* Hackathons Section */}
+      <div className="mt-6">
+        <Hackathons
+          pastHackathons={pastHackathons}
+          incomingHackathons={incomingHackathons}
+          ongoingHackathons={ongoingHackathons}
+        />
+      </div>
+
       <Footer />
+
+      {/* Back to Top Button */}
       <button
-        className="fixed bottom-5 right-5 bg-custom-purple text-white p-2 rounded shadow hover:bg-custom-blue transition"
+        className="fixed bottom-5 right-5 bg-[#96C9F4] text-black p-2 rounded shadow-lg hover:bg-[#75a5d3] transition-transform transform hover:-translate-y-1"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
         Back to Top

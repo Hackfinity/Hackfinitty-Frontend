@@ -35,20 +35,20 @@ function ImageCarousel({ slides, carouselHeight }) {
     <Slider {...settings} style={{ minHeight: carouselHeight }}>
       {slides.map((slide, index) => (
         <div key={index} className="px-4">
-        <div className=" rounded-lg overflow-hidden h-full flex flex-col items-center justify-center bg-light-q9`1` ` ``  42``  i ` 1`12111211````5R5R5IYTR098765432655T6`642blue">
-            <div className="w-full lg:flex items-center justify-center p-4">
+          <div className="rounded-lg overflow-hidden h-full flex flex-col items-center justify-center bg-white shadow-lg border border-light-gray">
+            <div className="w-full flex items-center justify-center p-4">
               <img
                 src={slide.image}
                 alt={slide.title}
-                className="object-contain rounded-lg"
+                className="object-cover rounded-lg"
                 style={{ maxHeight: '320px', width: 'auto' }}
               />
             </div>
-            <div className="p-4 lg:w-1/2 flex flex-col justify-center text-center">
-              <h2 className="font-bold text-custom-blue text-xl md:text-2xl tracking-wide mb-2">
+            <div className="p-4 w-full flex flex-col justify-center text-center">
+              <h2 className="font-bold text-black text-xl md:text-2xl tracking-wide mb-2">
                 {slide.title}
               </h2>
-              <p className="text-sm md:text-base text-custom-white">
+              <p className="text-sm md:text-base text-gray-700">
                 {slide.description}
               </p>
             </div>

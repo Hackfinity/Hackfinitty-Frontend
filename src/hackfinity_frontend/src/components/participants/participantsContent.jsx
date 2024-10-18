@@ -55,7 +55,7 @@ const ParticipantsContent = () => {
           <span className="text-sm mb-2">Affiliated Organizations</span>
           <p className="text-2xl font-bold">{stats.total_organizers}</p>
         </div>
-        <div className="bg-yellow-500 text-white rounded-lg shadow-lg p-5 flex flex-col items-center">
+        <div className="bg-[#b0a3d9] text-white rounded-lg shadow-lg p-5 flex flex-col items-center">
           <span className="text-sm mb-2">Submitted Projects</span>
           <p className="text-2xl font-bold">{stats.total_submissions}</p>
         </div>

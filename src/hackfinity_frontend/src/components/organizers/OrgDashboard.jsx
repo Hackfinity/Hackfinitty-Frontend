@@ -93,13 +93,13 @@ const OrgDashboard = () => {
             <span className="text-xs p-5">Your Hackathons</span>
             <p className="p-5 font-bold">{stats.total_hackathons}</p>
           </div>
-          <div className="border bg-yellow-500 rounded-md pr-[60px] pt-5 mr-5">
+          <div className="border bg-[#b0a3d9] rounded-md pr-[60px] pt-5 mr-5">
             <span className="text-xs p-5">Submitted Projects</span>
             <p className="p-5 font-bold">{stats.total_submissions}</p>
           </div>
         </div>
         <div className="mt-10">
-          <h1 className="text-custom-black font-bold">Ongoing hackathons</h1>
+          <h1 className="text-white font-bold">Ongoing hackathons</h1>
           {orgCode === "" && fetching ? (
             <LinearProgress />
           ) : (

@@ -37,15 +37,15 @@ const OrgSubmissionPage = () => {
     fetchHackathons();
   }, []);
   return (
-    <div className="bg-white p-8 right-side min-h-screen ">
+    <div className="bg-gradient-to-r from-custom-blue to-custom-purple p-8 right-side min-h-screen ">
       <div className="ml-60">
         <div className="flex justify-between">
-          <h1 className="text-gray-600 font-bold text-[24px] mb-10 ">
+          <h1 className="text-white font-bold text-[24px] mb-10 ">
             Submissions
           </h1>
           <OrgProfile />
         </div>
-        <p className="text-gray-600 text-sm font-semibold">Select Submissions to view from your Hackathons</p>
+        <p className="text-white text-sm font-semibold">Select Submissions to view from your Hackathons</p>
         {loading && <LinearProgress />}
         {!loading && (
           <div className="flex flex-wrap space-x-4 mt-5 ml-4">
@@ -53,17 +53,17 @@ const OrgSubmissionPage = () => {
               hackathonsPayload.map((field, index) => (
                 <div
                   key={index}
-                  className=" hover:border-custom-blue relative overflow-hidden border border-[#C7C7C7]  rounded-[20px] shadow mb-4 w-[300px] h-[380px] transition-transform transform hover:-translate-y-1"
+                  className=" hover:border-custom-blue relative overflow-hidden border border-[#fff]  rounded-[20px] shadow mb-4 w-[300px] h-[380px] transition-transform transform hover:-translate-y-1"
                 >
                   <HackathonMedia
                     cover_image_url={field.cover_image_url}
                     avatar_url={field.avatar_url}
                   />
                   <div className="relative">
-                    <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-white p-4 border-[#7C7C7C] border-t rounded-[20px]">
+                    <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-white p-4 border-[#fff] border-t rounded-[20px]">
                       <p className="text-sm font-bold mt-4">{field.title}</p>
-                      <p className="text-sm text-gray-700">{field.highlight}</p>
-                      <p className="text-xs text-gray-500  mt-2 h-[30px] overflow-hidden">
+                      <p className="text-sm text-white">{field.highlight}</p>
+                      <p className="text-xs text-white  mt-2 h-[30px] overflow-hidden">
                         {field.description}
                       </p>
                     </div>
@@ -71,7 +71,7 @@ const OrgSubmissionPage = () => {
                   <div className="flex gap-5 mt-[110px] ml-[22px]">
                     <button
                       onClick={() => handleViewClick(field)}
-                      className="border border-blue-500 rounded-md text-blue-500 w-[250px] text-xs mt-4 py-2 hover:bg-custom-blue hover:text-white"
+                      className="border border-blue-500 rounded-md text-which w-[250px] text-xs mt-4 py-2 hover:bg-custom-blue hover:text-white"
                     >
                       View submissions
                     </button>{" "}

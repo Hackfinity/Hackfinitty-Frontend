@@ -19,6 +19,7 @@ import OrgProfile from "../profile/OrgProfile";
 import { useNavigate } from "react-router-dom";
 import { setCurrentHackathonDetail } from "../../features/hackathon/hackathonSlice";
 import { ChevronRight } from "@mui/icons-material";
+
 const CreateHackathon = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [values, setValues] = useState({
@@ -46,6 +47,7 @@ const CreateHackathon = () => {
   const org_code = useSelector(selectOrganizerCode);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const handleAddTimelineItems = () => {
     const values = [...timelineItems];
     values.push({
@@ -54,26 +56,31 @@ const CreateHackathon = () => {
     });
     setTimelineItems(values);
   };
+
   const handleRemoveTimelineItems = (index) => {
     const values = [...timelineItems];
     values.splice(index, 1);
     setTimelineItems(values);
   };
+
   const handleInputChange = (index, event) => {
     const values = [...timelineItems];
     const updatedValue = event.target.name;
     values[index][updatedValue] = event.target.value;
     setTimelineItems(values);
   };
+
   const handleCompletionDateChange = (date, index) => {
     let utcDate = moment.utc(date.$d, "ddd MMM DD YYYY HH:mm:ss [GMT]ZZ (z)");
     const values = [...timelineItems];
     values[index]["start_date"] = utcDate.toISOString();
     setTimelineItems(values);
   };
+
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
+
   const handleCreateHackathon = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -104,27 +111,30 @@ const CreateHackathon = () => {
         setIsSubmitting(false);
       });
   };
+
   const handleThemeChange = (theme) => {
     setValues((prevData) => ({
       ...prevData,
       hackathon_theme: theme,
     }));
   };
+
   const handleHover = () => {
     if (isSubmitting) {
       return "cursor-not-allowed";
     } else {
-      return "cursor-pointer hover:bg-blue-500";
+      return "cursor-pointer hover:bg-white";
     }
   };
+
   return (
-    <div className="bg-white p-8 right-side min-h-screen min-w-full">
+    <div className="bg-gradient-to-r from-custom-blue to-custom-purple p-8 right-side min-h-screen min-w-full">
       <div className="ml-60">
         <div className="flex justify-between">
-          <h1 className="text-gray-600 font-bold text-[24px]">Hackathons</h1>
+          <h1 className="text-white font-bold text-[24px]">Hackathons</h1>
           <OrgProfile />
         </div>
-        <p className="text-xs text-gray-500 flex flex-row">
+        <p className="text-xs text-white flex flex-row">
           <span className="mt-[2px]">Hackathons</span>
           <ChevronRight sx={{ width: "20px", height: "20px" }} />
           <span className="mt-[2px]">Create a hackathon</span>
@@ -132,23 +142,23 @@ const CreateHackathon = () => {
           <span className="mt-[2px]">Basic details</span>
         </p>
 
-        <div className=" flex">
+        <div className="flex">
           <div>
             <ValidatorForm
               onSubmit={(e) => handleCreateHackathon(e)}
               className="flex gap-[80px]"
             >
-              <div className="flex flex-col ">
+              <div className="flex flex-col">
                 <label
-                  className="font-semibold mt-5 mb-2 text-xs "
+                  className="font-semibold mt-5 mb-2 text-xs text-white"
                   name="projectName"
                 >
                   Hackathon title
                 </label>
                 <input
                   type="text"
-                  className="w-[400px] px-3 py-2 border border-gray-400 rounded text-xs
-                  focus:outline-none focus:border-custom-blue "
+                  className="w-[400px] px-3 py-2 border border-[#ADD8E6] rounded text-xs
+                  focus:outline-none focus:border-[#ADD8E6]"
                   placeholder="Stack a Stake Competition"
                   required
                   onChange={handleChange("title")}
@@ -157,15 +167,15 @@ const CreateHackathon = () => {
                 />
 
                 <label
-                  className="mt-5 mb-2 text-xs font-semibold"
+                  className="mt-5 mb-2 text-xs text-white font-semibold"
                   name="projectName"
                 >
                   Hackathon highlight Phrase
                 </label>
                 <input
                   type="text"
-                  className="w-[400px] px-3 py-2 border border-gray-400 rounded text-xs
-                  focus:outline-none focus:border-custom-blue "
+                  className="w-[400px] px-3 py-2 border border-[#ADD8E6] rounded text-xs
+                  focus:outline-none focus:border-[#ADD8E6]"
                   placeholder="Building for the future"
                   required
                   onChange={handleChange("highlight")}
@@ -173,15 +183,15 @@ const CreateHackathon = () => {
                   value={highlight}
                 />
                 <label
-                  className="mt-5 mb-2 text-xs font-semibold"
+                  className="mt-5 mb-2 text-xs text-white font-semibold"
                   name="projectName"
                 >
                   Location
                 </label>
                 <input
                   type="text"
-                  className="w-[400px] px-3 py-2 border border-gray-400 rounded text-xs
-        focus:outline-none focus:border-custom-blue "
+                  className="w-[400px] px-3 py-2 border border-[#ADD8E6] rounded text-xs
+                  focus:outline-none focus:border-[#ADD8E6]"
                   placeholder="virtual, hybrid, onsite, etc"
                   required
                   onChange={handleChange("location")}
@@ -189,7 +199,7 @@ const CreateHackathon = () => {
                   value={location}
                 />
                 <label
-                  className="font-semibold mt-5 mb-2 text-xs"
+                  className="font-semibold text-white mt-5 mb-2 text-xs"
                   name="projectDescription"
                 >
                   Description
@@ -201,16 +211,29 @@ const CreateHackathon = () => {
                   onChange={handleChange("description")}
                   name="description"
                   value={description}
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": {
+                        borderColor: "#ADD8E6",
+                      },
+                      "&:hover fieldset": {
+                        borderColor: "#ADD8E6",
+                      },
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#ADD8E6",
+                      },
+                    },
+                  }}
                 />
                 <label className="flex flex-col mt-4">
-                  <span className="font-semibold mt-5 mb-2 text-xs">
+                  <span className="font-semibold mt-5 mb-2 text-white text-xs">
                     Select Hackathon Thematic Concern
                   </span>
                   <select
                     name="hackathon_theme"
                     value={values.hackathon_theme}
                     onChange={(e) => handleThemeChange(e.target.value)}
-                    className="mt-1  px-2 py-[6px] w-[300px] mb-4 text-sm border  bg-inherit border-gray-400 rounded-md focus:outline-none focus:border-custom-blue"
+                    className="mt-1 px-2 py-[6px] w-[300px] mb-4 text-sm border bg-inherit border-[#ADD8E6] rounded-md focus:outline-none focus:border-[#ADD8E6]"
                   >
                     <option value="Select..">Select..</option>
                     {themes.map((item) => (
@@ -230,17 +253,19 @@ const CreateHackathon = () => {
                               container
                               component="fieldset"
                               sx={{
-                                border: "solid 3px #295FAB",
+                                border: "solid 3px #ADD8E6",
                                 borderRadius: "15px",
                                 padding: (theme) => theme.spacing(2),
                               }}
                             >
                               <legend>
-                                <Typography>Hackathon Timeline</Typography>
+                                <Typography sx={{ color: "#fff" }}>
+                                  Hackathon Timeline
+                                </Typography>
                               </legend>
                               <Grid sx={{ m: 1 }}>
                                 <Box>
-                                  <Typography sx={{ fontWeight: "500" }}>
+                                  <Typography sx={{ fontWeight: "500", color:'#fff'}}>
                                     Event Name
                                   </Typography>
                                   <TextValidator
@@ -254,17 +279,28 @@ const CreateHackathon = () => {
                                     name="period_name"
                                     validators={["required"]}
                                     errorMessages={["This Field is Required"]}
+                                    sx={{
+                                      "& .MuiOutlinedInput-root": {
+                                        "& fieldset": {
+                                          borderColor: "#ADD8E6",
+                                        },
+                                        "&:hover fieldset": {
+                                          borderColor: "#ADD8E6",
+                                        },
+                                        "&.Mui-focused fieldset": {
+                                          borderColor: "#ADD8E6",
+                                        },
+                                      },
+                                    }}
                                   />
                                 </Box>
                                 <Box>
-                                  <Typography sx={{ fontWeight: "500" }}>
+                                  <Typography sx={{ fontWeight: "500", color:'#fff'}}>
                                     Date Due
                                   </Typography>
                                   {/* put a date field here */}
                                   <DatePicker
-                                    handleDateChange={
-                                      handleCompletionDateChange
-                                    }
+                                    handleDateChange={handleCompletionDateChange}
                                     idx={index}
                                   />
                                 </Box>
@@ -306,7 +342,7 @@ const CreateHackathon = () => {
               </div>
               <div className="flex flex-col">
                 <label
-                  className="font-semibold mt-5 mb-2 text-xs "
+                  className="font-semibold mt-5 mb-2 text-xs text-white"
                   name="projectName"
                 >
                   Hackathon project deliverables
@@ -315,13 +351,26 @@ const CreateHackathon = () => {
                   id="outlined-multiline-static"
                   multiline
                   rows={4}
-                  sx={{ width: "400px" }}
+                  sx={{
+                    width: "400px",
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": {
+                        borderColor: "#ADD8E6",
+                      },
+                      "&:hover fieldset": {
+                        borderColor: "#ADD8E6",
+                      },
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#ADD8E6",
+                      },
+                    },
+                  }}
                   onChange={handleChange("deliverables")}
                   name="deliverables"
                   value={deliverables}
                 />
                 <label
-                  className="font-semibold mt-5 mb-2 text-xs "
+                  className="font-semibold mt-5 mb-2 text-xs text-white"
                   name="projectName"
                 >
                   Hackathon project Goals
@@ -330,6 +379,19 @@ const CreateHackathon = () => {
                   id="outlined-multiline-static"
                   multiline
                   rows={4}
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": {
+                        borderColor: "#ADD8E6",
+                      },
+                      "&:hover fieldset": {
+                        borderColor: "#ADD8E6",
+                      },
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#ADD8E6",
+                      },
+                    },
+                  }}
                   onChange={handleChange("goals")}
                   name="goals"
                   value={goals}
@@ -338,11 +400,11 @@ const CreateHackathon = () => {
                 <div className="flex justify-end">
                   <button
                     type="submit"
-                    className={`${handleHover()}  text-white  text-xs font-semibold bg-custom-blue  rounded-md p-2 w-[150px] mt-[20px]  hover:bg-white hover:text-custom-blue hover:border hover:border-custom-blue`}
+                    className={`${handleHover()} text-custom-purple text-xs font-semibold bg-white rounded-md p-2 w-[150px] mt-[20px] hover:bg-white hover:text-custom-purple hover:border hover:border-white`}
                   >
                     {isSubmitting ? (
                       <>
-                        <CircularProgress sx={{ color: "primary" }} size={20} />{" "}
+                        <CircularProgress sx={{ color: "#fff" }} size={20} />{" "}
                         Submitting...
                       </>
                     ) : (

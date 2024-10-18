@@ -7,7 +7,7 @@ import { LinearProgress } from "@mui/material";
 const OrgHackathonPage = () => {
   const navigate = useNavigate();
   return (
-    <div className="bg-blue-900 p-8 right-side min-h-screen ml-60">
+    <div className="bg-gradient-to-r from-custom-blue to-custom-purple p-8 right-side min-h-screen ml-60">
      
         <div className="flex flex-col">
           <div className="flex justify-between">
